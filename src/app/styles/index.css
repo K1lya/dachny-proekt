@@ -1,4 +1,5 @@
 @import "./reset.css";
+@import "./variables.css";
 
 #root {
   width: 100%;
@@ -6,5 +7,5 @@
   min-height: 100vh;
   overflow: auto;
 
-  background-color: red;
+  font-family: var(--font-family-main), serif;
 }
