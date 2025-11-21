@@ -1,3 +1,9 @@
 :root {
+  /*font*/
   --font-family-main: "Onest", "Times New Roman", serif;
+
+  /*button*/
+  --button-bg-color: #E85A4F;
+  --button-text-color: #FFFFFF;
+  --button-hover-bg-color: #FF6452;
 }

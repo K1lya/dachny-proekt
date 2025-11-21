@@ -1,0 +1,23 @@
+.root {
+  height: 44px;
+  width: 123px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--button-text-color);
+  background-color: var(--button-bg-color);
+
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.1s cubic-bezier(.25,.46,.45,.94);
+}
+
+.root:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.root:active {
+  transform: scale(0.9);
+}
