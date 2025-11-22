@@ -1,0 +1,8 @@
+.root {
+  transition: transform 0.1s cubic-bezier(.25,.46,.45,.94);
+  cursor: pointer;
+}
+
+.root:active {
+  transform: scale(0.9);
+}

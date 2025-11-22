@@ -9,3 +9,7 @@
 
   font-family: var(--font-family-main), serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}

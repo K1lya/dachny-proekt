@@ -1,6 +1,7 @@
 :root {
   /*font*/
   --font-family-main: "Onest", "Times New Roman", serif;
+  --font-main-color: #121212;
 
   /*button*/
   --button-bg-color: #E85A4F;

@@ -1,0 +1,70 @@
+.root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 16px ;
+
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 63%;
+}
+
+.topContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sideOfTopContent {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+}
+
+.leftSideOfTopContent {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bottomContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone {
+  align-self: center;
+}
+
+.messengers {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  margin-left: 28px;
+}
+
+.getCall {
+  margin-left: 34px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 59px;
+}

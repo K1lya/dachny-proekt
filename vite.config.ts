@@ -14,7 +14,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    svgr(),
+    svgr({ include: '**/*.svg?react' }),
     checker({
       typescript: {
         tsconfigPath: './tsconfig.json',

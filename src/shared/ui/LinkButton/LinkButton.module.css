@@ -1,0 +1,17 @@
+.root {
+  color: var(--font-main-color);
+  white-space: nowrap;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.root:hover {
+  border-bottom: 4px solid var(--button-bg-color);
+  color: var(--button-bg-color);
+}
+
+.root:active {
+  transform: scale(0.9);
+}
+
+

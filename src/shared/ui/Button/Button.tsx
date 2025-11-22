@@ -6,20 +6,28 @@ import { Text } from '@/shared/ui/Text/Text.tsx';
 interface ButtonProps {
   className?: string;
   onClick?: () => void;
-  width?: string;
+  fontSize?: string;
   weight?: number;
+  width?: string;
 }
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
   // consts
-  const { className, children, onClick, width = '16px', weight = 600 } = props;
+  const {
+    className,
+    children,
+    onClick,
+    width = '60px',
+    fontSize = '16px',
+    weight = 600,
+  } = props;
   return (
     <button
       onClick={onClick}
       className={clsx(styles.root, className)}
       style={{ width }}
     >
-      <Text size={width} weight={weight}>
+      <Text size={fontSize} weight={weight} color='#FFFFFF'>
         {children}
       </Text>
     </button>
