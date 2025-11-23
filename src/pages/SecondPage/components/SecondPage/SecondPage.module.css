@@ -1,0 +1,20 @@
+.root {
+  height: 512px;
+  background-color: #EAE7DC;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 647px;
+  background-color: #EAE7DC;
+  width: 1240px;
+  bottom: 10%;
+  border-radius: 15px;
+}

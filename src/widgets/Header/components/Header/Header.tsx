@@ -11,7 +11,7 @@ import { Text } from '@/shared/ui/Text/Text.tsx';
 import { IconButton } from '@/shared/ui/IconButton/IconButton.tsx';
 import { Button } from '@/shared/ui/Button/Button.tsx';
 import { LinkButton } from '@/shared/ui/LinkButton/LinkButton.tsx';
-import { links } from '@/widgets/Header/constants/links.ts';
+import { headerLinks } from '@/shared/constants/headerLinks.ts';
 
 interface HeaderProps {
   className?: string;
@@ -20,6 +20,7 @@ interface HeaderProps {
 export const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
   // consts
   const { className } = props;
+
   return (
     <header className={clsx(styles.root, className)}>
       <div className={styles.content}>
@@ -61,7 +62,7 @@ export const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
               <SandwitchIcon style={{ marginRight: '10px' }} />
               Услуги
             </Button>
-            {links.map((link) => (
+            {headerLinks.map((link) => (
               <LinkButton key={link.name} link={link.link}>
                 {link.name}
               </LinkButton>

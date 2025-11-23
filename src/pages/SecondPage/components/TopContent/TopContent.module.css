@@ -1,0 +1,8 @@
+.root {
+  padding: 47px 47px 0 47px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 30px;
+}

@@ -1,0 +1,81 @@
+.root {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.root:active {
+  transform: scale(0.9);
+}
+
+.circleWrapper {
+  position: relative;
+  left: 45px;
+  top: 40px;
+  width: 181px;
+}
+
+.circle {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #FEFCF3;
+  z-index: 2;
+}
+
+.activeCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #E98074;
+  z-index: 1;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.activeCircleActive {
+  opacity: 1;
+}
+
+.icon {
+  position: absolute;
+  bottom: 14%;
+  right: -11px;
+  z-index: 4;
+}
+
+.title {
+  text-align: center;
+}
+
+.content {
+  position: relative;
+  padding: 25px 32px;
+  background-color: #FEFCF3;
+  border-radius: 15px;
+  max-width: 286px;
+  height: 181px;
+  z-index: 3;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contentActive {
+  box-shadow: 0 4px 37px 8px rgba(212, 203, 191, 1);
+}
+
+.badge {
+  padding: 8px 15px;
+  background-color: #D8C3A5;
+  border-radius: 10px;
+}
