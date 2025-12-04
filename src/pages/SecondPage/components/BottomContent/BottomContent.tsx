@@ -15,6 +15,7 @@ export const BottomContent: FC<PropsWithChildren<BottomContentProps>> = (props) 
     <div className={clsx(styles.root, className)}>
       {services.map((service) => (
         <ServicesPrice
+          key={service.title}
           icon={service.icon}
           title={service.title}
           price={service.price}

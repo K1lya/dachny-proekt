@@ -1,0 +1,15 @@
+.root {
+  width: 100%;
+  background-color: #FEFCF3;
+  padding-top: 70px;
+}
+
+.titleContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  width: 1240px
+}
