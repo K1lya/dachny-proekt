@@ -1,0 +1,22 @@
+.root {
+  position: relative;
+  padding: 80px;
+  background-color: #EAE7DC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  height: 1047px
+}
+
+.content {
+  z-index: 3;
+}
+
+.image {
+  position: absolute;
+  z-index: 2;
+}
+
+
+

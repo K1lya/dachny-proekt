@@ -1,0 +1,64 @@
+.root {
+  background-color: #FEFCF3;
+  padding: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  height: 768px;
+  width: 1376px;
+  background-image: url('@/shared/assets/backgrounds/bid.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  padding: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  height: 100%;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  gap: 14px;
+}
+
+.containerDiv {
+  display: flex;
+  gap: 100px;
+}
+
+.container {
+  width: 476px;
+  height: 187px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(255, 255, 255, 0.61);
+  backdrop-filter: blur(22.899999618530273px);
+
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contentText {
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+}
