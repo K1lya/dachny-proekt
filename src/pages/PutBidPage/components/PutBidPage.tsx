@@ -12,7 +12,7 @@ export const PutBidPage: FC<PropsWithChildren<PutBidPageProps>> = (props) => {
   // consts
   const { className } = props;
   return (
-    <div className={clsx(styles.root, className)}>
+    <section className={clsx(styles.root, className)}>
       <div className={styles.image}>
         <div className={styles.content}>
           <div className={styles.text}>
@@ -59,6 +59,6 @@ export const PutBidPage: FC<PropsWithChildren<PutBidPageProps>> = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

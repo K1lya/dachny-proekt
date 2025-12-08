@@ -12,11 +12,11 @@ export const SecondPage: FC<PropsWithChildren<SecondPageProps>> = (props) => {
   // consts
   const { className } = props;
   return (
-    <div className={clsx(styles.root, className)}>
+    <section className={clsx(styles.root, className)}>
       <div className={styles.content}>
         <TopContent />
         <BottomContent />
       </div>
-    </div>
+    </section>
   );
 };

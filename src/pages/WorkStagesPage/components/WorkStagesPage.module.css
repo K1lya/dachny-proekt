@@ -4,13 +4,14 @@
   background-color: #EAE7DC;
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 1;
   height: 1047px
 }
 
 .content {
   z-index: 3;
+  width: 100%;
+  height: 100%;
 }
 
 .image {
@@ -18,5 +19,40 @@
   z-index: 2;
 }
 
+.border {
+  width: 106px;
+  border: 4px solid #E85A4F;
+}
 
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.stagesContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+
+.stageLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 392px;
+}
+
+.stage {
+  display: flex;
+  align-items: start;
+}
+
+.text {
+  max-width: 344px;
+  margin-left: 49px;
+}

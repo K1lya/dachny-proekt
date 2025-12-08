@@ -12,7 +12,7 @@ export const GalleryPage: FC<PropsWithChildren<GalleryPageProps>> = (props) => {
   // consts
   const { className } = props;
   return (
-    <div className={clsx(styles.root, className)}>
+    <section className={clsx(styles.root, className)}>
       <div className={styles.titleContainer}>
         <Text weight={400} size='56px' className={styles.title}>
           Вдохновляйтесь уютом,
@@ -20,6 +20,6 @@ export const GalleryPage: FC<PropsWithChildren<GalleryPageProps>> = (props) => {
         </Text>
       </div>
       <Gallery />
-    </div>
+    </section>
   );
 };
