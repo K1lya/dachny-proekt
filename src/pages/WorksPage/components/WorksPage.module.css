@@ -1,0 +1,15 @@
+.root {
+  height: 981px;
+  background-color: #F6F5F1;
+
+
+
+
+
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

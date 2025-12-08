@@ -1,0 +1,55 @@
+.block {
+  width: 392px;
+  height: 400px;
+  padding: 60px 40px 40px 40px;
+
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 14px;
+  backdrop-filter: blur(18.799999237060547px);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 16px;
+
+  z-index: 1;
+}
+
+.ellipse {
+  width: 268px;
+  height: 172px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  top: 20px;
+}
+
+.border {
+  height: 54px;
+  border-left: 6px solid #E85A4F;
+  position: absolute;
+  left: 0;
+}
+
+.icon {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: -40px;
+}
+
+.title {
+  z-index: 1;
+}
+
+.text {
+  z-index: 1;
+}
+

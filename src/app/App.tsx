@@ -3,6 +3,7 @@ import { SecondPage } from '@/pages/SecondPage';
 import { GalleryPage } from '@/pages/GalleryPage';
 import { PutBidPage } from '@/pages/PutBidPage';
 import { WorkStagesPage } from '@/pages/WorkStagesPage';
+import { WorksPage } from '@/pages/WorksPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <GalleryPage />
         <PutBidPage />
         <WorkStagesPage />
+        <WorksPage />
       </div>
     </>
   );

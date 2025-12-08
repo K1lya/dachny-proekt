@@ -43,6 +43,7 @@ export default [
       'no-empty': 'error',
       'linebreak-style': ['error', 'unix'],
       'no-unused-vars': 'off',
+      'max-len': ['error', { code: 120 }],
       //ts
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
