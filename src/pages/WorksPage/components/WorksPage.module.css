@@ -1,15 +1,58 @@
 .root {
-  height: 981px;
+  height: 1070px;
+  position: relative;
   background-color: #F6F5F1;
-
-
-
-
-
-
-
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 70px;
+  padding-bottom: 80px;
+}
+
+.works {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 67px;
+  top: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.infoText {
+  max-width: 322px;
+}
+
+.border {
+  width: 106px;
+  border-top: 6px solid #E85A4F;
+  margin-top: 25px;
+}
+
+.image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  top: 20px;
+}
+
+.img {
+  height: 210px;
+  left: 20px;
+}
+
+.button {
+  z-index: 2;
+  position: relative;
+}
+
+.buttonContainer {
+  position: relative;
 }

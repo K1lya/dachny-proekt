@@ -16,6 +16,13 @@
   gap: 16px;
 
   z-index: 1;
+
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.block:active {
+  transform: scale(0.9);
 }
 
 .ellipse {

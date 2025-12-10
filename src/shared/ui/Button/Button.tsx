@@ -9,6 +9,7 @@ interface ButtonProps {
   fontSize?: string;
   weight?: number;
   width?: string;
+  height?: string;
 }
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
@@ -18,6 +19,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
     children,
     onClick,
     width = '60px',
+    height,
     fontSize = '16px',
     weight = 600,
   } = props;
@@ -25,7 +27,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
     <button
       onClick={onClick}
       className={clsx(styles.root, className)}
-      style={{ width }}
+      style={{ width, height }}
     >
       <Text size={fontSize} weight={weight} color='#FFFFFF'>
         {children}
