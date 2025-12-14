@@ -4,6 +4,7 @@ import { GalleryPage } from '@/pages/GalleryPage';
 import { PutBidPage } from '@/pages/PutBidPage';
 import { WorkStagesPage } from '@/pages/WorkStagesPage';
 import { WorksPage } from '@/pages/WorksPage';
+import { OurClientsPage } from '@/pages/OurClientsPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <PutBidPage />
         <WorkStagesPage />
         <WorksPage />
+        <OurClientsPage />
       </div>
     </>
   );

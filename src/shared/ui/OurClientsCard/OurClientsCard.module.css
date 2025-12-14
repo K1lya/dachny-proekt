@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 318px;
+}
+
+.img {
+  height: 95px;
+  width: 160px;
+}
+
+.border {
+  width: 55px;
+  height: 4px;
+  border-top: 4px solid #C6AB83;
+  margin-top: 13px;
+}
