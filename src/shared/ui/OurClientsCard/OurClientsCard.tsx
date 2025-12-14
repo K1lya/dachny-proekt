@@ -17,7 +17,7 @@ export const OurClientsCard: FC<PropsWithChildren<OurClientsCardProps>> = (
   const { className } = props;
   return (
     <div className={clsx(styles.root, className)}>
-      <img src={props.icon} className={styles.img} />
+      <img src={props.icon} className={styles.img} alt={props.icon} />
       <div>
         <Text weight={700} size={'22px'}>
           {props.title}
