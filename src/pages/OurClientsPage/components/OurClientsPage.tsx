@@ -15,7 +15,7 @@ export const OurClientsPage: FC<PropsWithChildren<OurClientsPageProps>> = (
   // consts
   const { className } = props;
   return (
-    <div className={clsx(styles.root, className)}>
+    <section className={clsx(styles.root, className)}>
       <div>
         <div>
           <Text weight={400} size={'56px'}>
@@ -36,6 +36,6 @@ export const OurClientsPage: FC<PropsWithChildren<OurClientsPageProps>> = (
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
