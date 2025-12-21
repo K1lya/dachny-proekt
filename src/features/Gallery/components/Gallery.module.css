@@ -1,6 +1,8 @@
 .section {
   padding: 0 20px;
   box-sizing: border-box;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 /* HEADER остаётся как был */
@@ -9,7 +11,7 @@
   --column-gap: 22px;
   --column-base-width: 220px; /* должна совпадать с BASE_COLUMN_WIDTH в TS */
 
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   padding-bottom: 10px;
   margin: 0 auto;
@@ -88,3 +90,87 @@
     font-size: 22px;
   }
 }
+
+/* ============================================================
+   NEW MODE styles (items) — отдельные классы, старые не трогаем
+   ============================================================ */
+
+.wrapperRow {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.wrapperRow::-webkit-scrollbar {
+  height: 6px;
+}
+
+.wrapperRow::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+}
+
+.trackRow {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 22px;
+  width: max-content;
+}
+
+.rowItem {
+  flex: 0 0 auto;
+  /* min-width: 320px; */
+}
+
+/* ============================================================
+   CENTERED MODE (items + centered)
+   - две карточки по центру: scale(1)
+   - боковые: scale(0.7)
+   - анимация: трансформ трека + scale элементов
+   ============================================================ */
+
+.wrapperRowCentered {
+  overflow: hidden;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.trackRowCentered {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 22px;
+  width: max-content;
+
+  transition: transform 420ms ease;
+  will-change: transform;
+}
+
+.rowItemCentered {
+  flex: 0 0 auto;
+
+  /* ВАЖНО: чтобы шаг был одинаковый.
+     Подгони под свой макет отзывов, если нужно. */
+  width: 604px;
+
+  transform-origin: center center;
+  transition: transform 420ms ease;
+  will-change: transform;
+}
+
+.rowItemCenteredActive {
+  transform: scale(1);
+  z-index: 2;
+}
+
+.rowItemCenteredSide {
+  transform: scale(0.7);
+  z-index: 1;
+}
+

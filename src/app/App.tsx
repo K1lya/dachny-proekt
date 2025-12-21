@@ -6,7 +6,7 @@ import { WorkStagesPage } from '@/pages/WorkStagesPage';
 import { WorksPage } from '@/pages/WorksPage';
 import { OurClientsPage } from '@/pages/OurClientsPage';
 import { AboutCompanyPage } from '@/pages/AboutCompanyPage';
-import { PeopleTalkPage } from '@/pages/PeopleTalkPage';
+import { ClientWordsPage } from '@/pages/ClientWordsPage';
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
         <WorkStagesPage />
         <WorksPage />
         <OurClientsPage />
+        <ClientWordsPage />
         <AboutCompanyPage />
-        <PeopleTalkPage />
       </div>
     </>
   );
