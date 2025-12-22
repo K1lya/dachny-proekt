@@ -47,6 +47,8 @@ type Props = {
 
   /** Расстояние между айтемами (px) в items-режимах. По умолчанию 32 */
   gap?: number;
+
+  rowItemsWidth?: string;
 };
 
 const clamp = (v: number, min: number, max: number) =>
@@ -57,6 +59,7 @@ export const Gallery = ({
   centered = false,
   scrollStepRatio = 0.8,
   gap = 32,
+  rowItemsWidth,
 }: Props) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -233,13 +236,14 @@ export const Gallery = ({
                     key={it.key ?? index}
                     className={[
                       styles.rowItemCentered,
-                      isCenter
+                      isCenter || rowItemsWidth
                         ? styles.rowItemCenteredActive
                         : styles.rowItemCenteredSide,
                       state.measured
                         ? styles.rowItemCenteredMeasured
                         : styles.rowItemCenteredPre,
                     ].join(' ')}
+                    style={{ width: rowItemsWidth }}
                     data-gallery-item='center'
                   >
                     {it.node}

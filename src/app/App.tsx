@@ -7,6 +7,7 @@ import { WorksPage } from '@/pages/WorksPage';
 import { OurClientsPage } from '@/pages/OurClientsPage';
 import { AboutCompanyPage } from '@/pages/AboutCompanyPage';
 import { ClientWordsPage } from '@/pages/ClientWordsPage';
+import { BanksPage } from '@/pages/BanksPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <WorksPage />
         <OurClientsPage />
         <ClientWordsPage />
+        <BanksPage />
         <AboutCompanyPage />
       </div>
     </>

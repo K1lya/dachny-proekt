@@ -1,1 +1,1 @@
-export { AboutCompanyPage } from './components/AboutCompanyPage.tsx';
+export { AboutCompanyPage } from './AboutCompanyPage.tsx';

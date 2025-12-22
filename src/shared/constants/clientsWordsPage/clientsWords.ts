@@ -1,7 +1,7 @@
 import photo from '@/shared/assets/icons/peopleTalk/MaskGroup.png';
 import image from '@/shared/assets/icons/peopleTalk/Group 1321315710.png';
 
-export const peopleTalk = [
+export const clientsWords = [
   {
     photo: photo,
     image: image,

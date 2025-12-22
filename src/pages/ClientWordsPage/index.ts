@@ -1,1 +1,1 @@
-export { ClientWordsPage } from './components/ClientWordsPage.tsx';
+export { ClientWordsPage } from './ClientWordsPage.tsx';

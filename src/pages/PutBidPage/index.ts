@@ -1,1 +1,1 @@
-export { PutBidPage } from './components/PutBidPage.tsx';
+export { PutBidPage } from './PutBidPage.tsx';

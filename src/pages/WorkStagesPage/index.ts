@@ -1,1 +1,1 @@
-export { WorkStagesPage } from './components/WorkStagesPage.tsx';
+export { WorkStagesPage } from './WorkStagesPage.tsx';

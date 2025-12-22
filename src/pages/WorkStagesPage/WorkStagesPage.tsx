@@ -1,5 +1,5 @@
 import styles from './WorkStagesPage.module.css';
-import Image from '@/shared/assets//backgrounds/DachaProject.svg?react';
+import Image from '@/shared/assets/backgrounds/DachaProject.svg?react';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 
 export const WorkStagesPage = () => {

@@ -1,1 +1,1 @@
-export { GalleryPage } from './components/GalleryPage.tsx';
+export { GalleryPage } from './GalleryPage.tsx';
