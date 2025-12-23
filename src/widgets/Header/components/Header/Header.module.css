@@ -1,6 +1,4 @@
 .root {
-  top: 0;
-  left: 0;
   width: 100%;
   padding-top: 16px ;
 
@@ -11,7 +9,8 @@
 .content {
   display: flex;
   flex-direction: column;
-  width: 63%;
+  width: 60%;
+  gap: 20px;
 }
 
 .topContent {
@@ -35,10 +34,7 @@
 }
 
 .bottomContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 10px;
+  width: 100%;
 }
 
 .address {
@@ -48,6 +44,7 @@
 
 .phone {
   align-self: center;
+  text-align: right;
 }
 
 .messengers {
@@ -65,5 +62,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 59px;
+  justify-content: space-between;
+}
+
+.logo {
+  margin-right: 60px;
 }

@@ -23,10 +23,12 @@ export const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
 
   return (
     <header className={clsx(styles.root, className)}>
+      <div className={styles.logo}>
+        <Logo />
+      </div>
       <div className={styles.content}>
         <div className={styles.topContent}>
           <div className={styles.leftSideOfTopContent}>
-            <Logo />
             <div className={styles.address}>
               <Text size='14px' weight={400}>
                 г. Владимир, ул. Куйбышева, 16A
@@ -56,7 +58,6 @@ export const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
           </div>
         </div>
         <div className={styles.bottomContent}>
-          <div style={{ width: '187.1px' }} />
           <div className={styles.links}>
             <Button width='217px' weight={500}>
               <SandwitchIcon style={{ marginRight: '10px' }} />
