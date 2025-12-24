@@ -7,8 +7,12 @@
   align-items: center;
 }
 
+.rootTablet {
+  padding: 0;
+}
+
 .image {
-  height: 768px;
+  height: 80vh;
   width: 1376px;
   background-image: url('@/shared/assets/backgrounds/bid.png');
   background-repeat: no-repeat;
@@ -16,6 +20,11 @@
   background-size: cover;
 
   padding: 50px;
+}
+
+.imageTablet {
+  width: 100%;
+  padding: 0;
 }
 
 .content {
@@ -38,12 +47,18 @@
   gap: 100px;
 }
 
+.containerDivTablet {
+  gap: 0;
+  width: 90%;
+}
+
 .container {
   width: 476px;
   height: 187px;
   padding: 30px;
   background: rgba(255, 255, 255, 0.36);
   border: 1px solid rgba(255, 255, 255, 0.61);
+  border-radius: 10px;
   backdrop-filter: blur(22.899999618530273px);
 
 
@@ -54,6 +69,14 @@
   align-items: center;
 }
 
+.containerTablet {
+  transform: scale(0.6);
+  padding: 16px 6px;
+  justify-content: start;
+  gap: 15px;
+  height: fit-content;
+}
+
 .contentText {
   text-align: center;
 }
@@ -61,4 +84,9 @@
 .button {
   display: flex;
   align-items: center;
+}
+
+.buttonTablet {
+  width: 262px;
+  height: 48px;
 }
