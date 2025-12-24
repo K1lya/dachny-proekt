@@ -8,6 +8,7 @@ import { OurClientsPage } from '@/pages/OurClientsPage';
 import { AboutCompanyPage } from '@/pages/AboutCompanyPage';
 import { ClientWordsPage } from '@/pages/ClientWordsPage';
 import { BanksPage } from '@/pages/BanksPage';
+import { NavigationBar } from '@/widgets/NavigationBar';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <ClientWordsPage />
         <BanksPage />
         <AboutCompanyPage />
+        <NavigationBar position='bottom' />
       </div>
     </>
   );

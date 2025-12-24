@@ -6,11 +6,21 @@
   justify-content: center;
 }
 
+.rootBottom {
+  background-color: #212121;
+  padding: 47px 0 63px 0;
+}
+
 .content {
   display: flex;
   flex-direction: column;
   width: 60%;
   gap: 20px;
+}
+
+.contentTablet {
+  width: 100%;
+  gap: 11px;
 }
 
 .topContent {
@@ -28,9 +38,12 @@
 .leftSideOfTopContent {
   display: flex;
   flex-direction: row;
-  width: 40%;
   justify-content: space-between;
   gap: 10px;
+}
+
+.leftSideOfTopContentTablet {
+  gap: 40px;
 }
 
 .bottomContent {
@@ -67,4 +80,17 @@
 
 .logo {
   margin-right: 60px;
+}
+
+.bottomLink.bottomLink {
+  color: #EAE7DC;
+}
+
+.bottomInfo {
+  padding: 20px 0;
+  background-color: #2A2A2B;
+
+  display: flex;
+  align-items: center;
+  gap: 142px;
 }

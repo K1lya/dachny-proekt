@@ -1,7 +1,8 @@
 import type { FC, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import styles from './FirstPage.module.css';
-import { Header } from '@/widgets/Header';
+import { NavigationBar } from '@/widgets/NavigationBar';
+import { EView, useView } from '@/shared/hooks/useView.ts';
 
 interface FirstPageProps {
   className?: string;
@@ -10,9 +11,16 @@ interface FirstPageProps {
 export const FirstPage: FC<PropsWithChildren<FirstPageProps>> = (props) => {
   // consts
   const { className } = props;
+  const view = useView();
   return (
-    <section className={clsx(styles.root, className)}>
-      <Header />
+    <section
+      className={clsx(
+        styles.root,
+        { [styles.rootTablet]: view === EView.TABLET },
+        className,
+      )}
+    >
+      <NavigationBar />
     </section>
   );
 };
