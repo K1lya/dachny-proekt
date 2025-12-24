@@ -4,6 +4,10 @@
   padding-top: 70px;
 }
 
+.rootTablet {
+  padding: 30px;
+}
+
 .titleContainer {
   width: 100%;
   display: flex;
