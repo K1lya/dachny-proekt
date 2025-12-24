@@ -186,7 +186,10 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
         </div>
       </header>
       {position === 'bottom' && (
-        <div className={styles.bottomInfo} style={{ paddingLeft: `${margin}px` }}>
+        <div
+          className={styles.bottomInfo}
+          style={view === EView.DESC ? { paddingLeft: `${margin}px` } : undefined}
+        >
           <Text color={'#8E8D8A'}>© 2025 Дачный Проект</Text>
           <Text color={'#8E8D8A'}>Политика конфиденциальности</Text>
         </div>
