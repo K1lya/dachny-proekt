@@ -26,7 +26,11 @@ export const PutBidPage: FC<PropsWithChildren<PutBidPageProps>> = (props) => {
           [styles.imageTablet]: view === EView.TABLET,
         })}
       >
-        <div className={styles.content}>
+        <div
+          className={clsx(styles.content, {
+            [styles.contentTable]: view === EView.TABLET,
+          })}
+        >
           <div className={styles.text}>
             <Text
               weight={400}

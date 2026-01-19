@@ -1,5 +1,5 @@
 .root {
-  background-image: url('@/shared/assets/backgrounds/1stscreen.jpg');
+  background-image: url('@/shared/assets/backgrounds/1stscreen.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -9,4 +9,5 @@
 
 .rootTablet {
   padding: 0 30px;
+  height: 700px;
 }

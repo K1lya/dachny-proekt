@@ -25,6 +25,7 @@
 .imageTablet {
   width: 100%;
   padding: 0;
+  height: 430px;
 }
 
 .content {
@@ -35,6 +36,10 @@
 
   justify-content: space-between;
   align-items: center;
+}
+
+.contentTable {
+  padding-top: 6vh;
 }
 
 .text {
@@ -50,6 +55,7 @@
 .containerDivTablet {
   gap: 0;
   width: 90%;
+  justify-content: center;
 }
 
 .container {
@@ -70,7 +76,7 @@
 }
 
 .containerTablet {
-  transform: scale(0.6);
+  transform: scale(0.8);
   padding: 16px 6px;
   justify-content: start;
   gap: 15px;
