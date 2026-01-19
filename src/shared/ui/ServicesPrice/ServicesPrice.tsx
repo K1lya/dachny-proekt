@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import styles from './ServicesPrice.module.css';
 import { useHover } from '@/shared/hooks/useHover.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
+import { EView, useView } from '@/shared/hooks/useView.ts';
 
 interface ServicesPriceProps {
   className?: string;
@@ -15,11 +16,19 @@ interface ServicesPriceProps {
 export const ServicesPrice: FC<PropsWithChildren<ServicesPriceProps>> = (props) => {
   // consts
   const { className, circleWidth = '189px', price, title } = props;
+  const view = useView();
 
   const { ref, hovered } = useHover<HTMLDivElement>();
   return (
-    <div ref={ref} className={clsx(styles.root, className)}>
-      <div className={styles.circleWrapper} style={{ width: circleWidth }}>
+    <div
+      ref={ref}
+      className={clsx(
+        styles.root,
+        { [styles.rootTable]: view === EView.TABLET },
+        className,
+      )}
+    >
+      <div className={clsx(styles.circleWrapper)} style={{ width: circleWidth }}>
         <div
           className={clsx(styles.activeCircle, hovered && styles.activeCircleActive)}
         />

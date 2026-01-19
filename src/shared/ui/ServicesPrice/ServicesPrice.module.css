@@ -8,6 +8,10 @@
   transform: scale(0.9);
 }
 
+.rootTable {
+  zoom: 0.6;
+}
+
 .circleWrapper {
   position: relative;
   left: 45px;

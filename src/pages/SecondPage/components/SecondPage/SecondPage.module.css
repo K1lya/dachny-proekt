@@ -12,9 +12,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 647px;
   background-color: #EAE7DC;
   width: 1240px;
   bottom: 10%;
   border-radius: 15px;
+}
+
+.contentTablet {
+  width: 708px;
 }

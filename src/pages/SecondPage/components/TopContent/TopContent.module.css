@@ -6,3 +6,9 @@
   grid-column-gap: 50px;
   grid-row-gap: 30px;
 }
+
+.rootTable {
+  padding: 21px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}

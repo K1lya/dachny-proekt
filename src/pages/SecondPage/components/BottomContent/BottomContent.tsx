@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import styles from './BottomContent.module.css';
 import { services } from '@/shared/constants/secondPage/services.ts';
 import { ServicesPrice } from '@/shared/ui/ServicesPrice/ServicesPrice.tsx';
+import { EView, useView } from '@/shared/hooks/useView.ts';
 
 interface BottomContentProps {
   className?: string;
@@ -11,8 +12,15 @@ interface BottomContentProps {
 export const BottomContent: FC<PropsWithChildren<BottomContentProps>> = (props) => {
   // consts
   const { className } = props;
+  const view = useView();
   return (
-    <div className={clsx(styles.root, className)}>
+    <div
+      className={clsx(
+        styles.root,
+        { [styles.rootTable]: view === EView.TABLET },
+        className,
+      )}
+    >
       {services.map((service) => (
         <ServicesPrice
           key={service.title}
