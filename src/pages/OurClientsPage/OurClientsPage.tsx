@@ -4,6 +4,7 @@ import styles from './OurClientsPage.module.css';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { OurClientsCard } from '@/shared/ui/OurClientsCard/OurClientsCard.tsx';
 import { ourClients } from '@/shared/constants/ourClientsPage/ourClients.ts';
+import { EView, useView } from '@/shared/hooks/useView.ts';
 
 interface OurClientsPageProps {
   className?: string;
@@ -14,9 +15,16 @@ export const OurClientsPage: FC<PropsWithChildren<OurClientsPageProps>> = (
 ) => {
   // consts
   const { className } = props;
+  const view = useView();
   return (
-    <section className={clsx(styles.root, className)}>
-      <div>
+    <section
+      className={clsx(
+        styles.root,
+        { [styles.rootTable]: view === EView.TABLET },
+        className,
+      )}
+    >
+      <div className={clsx({ [styles.containerTable]: view === EView.TABLET })}>
         <div>
           <Text weight={400} size={'56px'}>
             Что ценят в нас

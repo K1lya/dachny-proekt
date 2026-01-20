@@ -1,11 +1,20 @@
 import styles from './WorkStagesPage.module.css';
 import Image from '@/shared/assets/backgrounds/DachaProject.svg?react';
 import { Text } from '@/shared/ui/Text/Text.tsx';
+import clsx from 'clsx';
+import { EView, useView } from '@/shared/hooks/useView.ts';
 
 export const WorkStagesPage = () => {
+  const view = useView();
   return (
-    <section className={styles.root}>
-      <div className={styles.image}>
+    <section
+      className={clsx(styles.root, { [styles.rootTable]: view === EView.TABLET })}
+    >
+      <div
+        className={clsx(styles.image, {
+          [styles.imageTablet]: view === EView.TABLET,
+        })}
+      >
         <Image />
       </div>
       <div className={styles.content}>

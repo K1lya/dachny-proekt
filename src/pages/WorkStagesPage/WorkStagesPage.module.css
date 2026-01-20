@@ -8,6 +8,12 @@
   height: 1047px
 }
 
+.rootTable {
+  padding: 40px 30px;
+  zoom: 0.5;
+  height: 820px;
+}
+
 .content {
   z-index: 3;
   width: 100%;
@@ -17,6 +23,11 @@
 .image {
   position: absolute;
   z-index: 2;
+}
+
+.imageTablet {
+  zoom: 0.5;
+  top: 30vh;
 }
 
 .border {
