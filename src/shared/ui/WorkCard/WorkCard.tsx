@@ -1,28 +1,89 @@
-import React from 'react';
+import React, { memo, useState } from 'react';
+import clsx from 'clsx';
 import styles from './WorkCard.module.css';
 import { Text } from '@/shared/ui/Text/Text.tsx';
+import { EView } from '@/shared/hooks/useView';
 
-interface InfoBlockProps {
+interface WorkCardProps {
   title: string;
   text: string;
   icon: TSVGIcon;
+  view?: EView;
 }
 
-export const WorkCard: React.FC<InfoBlockProps> = (props) => {
-  const { title, text } = props;
-  return (
-    <div className={styles.block}>
-      <div className={styles.ellipse} />
-      <span className={styles.border} />
-      <div className={styles.icon}>
-        <props.icon />
+const Chevron = ({ isOpen }: { isOpen: boolean }) => (
+  <svg
+    className={clsx(styles.chevron, isOpen && styles.chevronOpen)}
+    width='20'
+    height='20'
+    viewBox='0 0 20 20'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    aria-hidden
+  >
+    <path
+      d='M5 8L10 13L15 8'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);
+
+export const WorkCard: React.FC<WorkCardProps> = memo(
+  ({ title, text, icon: Icon, view = EView.DESC }) => {
+    const isCompact = view === EView.TABLET || view === EView.MOBILE;
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const onToggle = (e: React.SyntheticEvent) => {
+      e.stopPropagation();
+      e.preventDefault();
+
+      setIsOpen((prev) => !prev);
+    };
+
+    return (
+      <div className={clsx(styles.block, isCompact && styles.blockCompact)}>
+        <div className={styles.ellipse} />
+        <span className={styles.border} />
+
+        <div className={styles.icon}>
+          <Icon />
+        </div>
+
+        <Text className={styles.title} weight={700} size='24px'>
+          {title}
+        </Text>
+
+        {/* кнопка только для TABLET/MOBILE */}
+        {isCompact && (
+          <button type='button' className={styles.toggleBtn} onClick={onToggle}>
+            <Chevron isOpen={isOpen} />
+          </button>
+        )}
+
+        {/* ===== НИЖНЯЯ ЧАСТЬ ===== */}
+        {!isCompact && (
+          <div className={styles.textWrap}>
+            <Text className={styles.text} size='16px'>
+              {text}
+            </Text>
+          </div>
+        )}
+
+        {isCompact && isOpen && (
+          <div
+            style={{ display: isOpen ? 'inline' : 'none' }}
+            className={clsx(styles.textWrap, styles.textWrapCompact)}
+          >
+            <Text className={styles.text} size='16px'>
+              {text}
+            </Text>
+          </div>
+        )}
       </div>
-      <Text className={styles.title} weight={700} size={'24px'}>
-        {title}
-      </Text>
-      <Text className={styles.text} size={'16px'}>
-        {text}
-      </Text>
-    </div>
-  );
-};
+    );
+  },
+);

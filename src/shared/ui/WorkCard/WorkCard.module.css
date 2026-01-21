@@ -60,3 +60,57 @@
   z-index: 1;
 }
 
+/* ===== Compact: только высота, чтобы карточка реально схлопывалась ===== */
+.blockCompact {
+  height: fit-content;
+  zoom: 0.6;
+}
+
+/* ===== Toggle button ===== */
+.toggleBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 2;
+
+  touch-action: manipulation;
+  transition: transform 160ms ease;
+}
+
+.toggleBtn:active {
+  transform: scale(0.95);
+}
+
+.chevron {
+  color: rgba(0, 0, 0, 0.65);
+  transition: transform 240ms ease;
+  transform: rotate(0deg);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ===== Text area ===== */
+.textWrap {
+  width: 100%;
+  z-index: 1;
+}
+
+/* compact container */
+.textWrapCompact {
+  overflow: hidden;
+}

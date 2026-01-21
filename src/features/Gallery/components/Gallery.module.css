@@ -123,14 +123,14 @@
 
 .rowItem {
   flex: 0 0 auto;
-  /* min-width: 320px; */
 }
 
 /* ============================================================
-   CENTERED MODE (items + centered)
-   - две карточки по центру: scale(1)
+   CENTERED MODE (items + centered / singleCentered)
+   - centered: две карточки по центру
+   - singleCentered: одна карточка по центру
    - боковые: scale(0.7)
-   - анимация: трансформ трека + scale элементов
+   - анимация: transform трека + scale элементов
    ============================================================ */
 
 .wrapperRowCentered {
@@ -174,3 +174,11 @@
   z-index: 1;
 }
 
+/* Эти классы используются в TS, чтобы не было "рывка" до измерения размеров */
+.rowItemCenteredPre {
+  transition: none;
+}
+
+.rowItemCenteredMeasured {
+  transition: transform 420ms ease;
+}

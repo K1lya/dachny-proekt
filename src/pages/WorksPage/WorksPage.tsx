@@ -4,9 +4,11 @@ import { Button } from '@/shared/ui/Button/Button.tsx';
 import img from '@/shared/assets/icons/worksPage/img.png';
 import { works } from '@/shared/constants/worksPage/works.ts';
 import { WorkCard } from '@/shared/ui/WorkCard/WorkCard.tsx';
+import { useView } from '@/shared/hooks/useView.ts';
 
 export const WorksPage = () => {
   // consts
+  const view = useView();
   return (
     <section className={styles.root}>
       <div className={styles.info}>
@@ -44,7 +46,7 @@ export const WorksPage = () => {
       </div>
       <div className={styles.works}>
         {works.map((work) => (
-          <WorkCard key={work.title} {...work} />
+          <WorkCard key={work.title} {...work} view={view} />
         ))}
       </div>
     </section>

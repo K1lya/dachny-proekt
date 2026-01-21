@@ -13,8 +13,17 @@
   align-items: center;
 }
 
+.titleTablet {
+  align-items: start;
+  padding-left: 30px;
+}
+
 .text {
   width: 1220px;
+}
+
+.textTablet {
+  width: auto;
 }
 
 .border {

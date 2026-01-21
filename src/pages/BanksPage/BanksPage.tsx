@@ -4,6 +4,7 @@ import styles from './BanksPage.module.css';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { Gallery } from '@/features/Gallery';
 import { banks } from '@/shared/constants/banksPage/banks.ts';
+import { EView, useView } from '@/shared/hooks/useView.ts';
 
 interface BanksPageProps {
   className?: string;
@@ -12,6 +13,8 @@ interface BanksPageProps {
 export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
   // consts
   const { className } = props;
+  const view = useView();
+  const titleSize = view === EView.TABLET ? '32px' : '56px';
 
   const items = banks.map((item) => ({
     key: item,
@@ -19,11 +22,15 @@ export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
   }));
   return (
     <section className={clsx(styles.root, className)}>
-      <div className={styles.title}>
+      <div
+        className={clsx(styles.title, {
+          [styles.titleTablet]: view === EView.TABLET,
+        })}
+      >
         <div className={styles.text}>
-          <Text weight={400} size={'56px'}>
+          <Text weight={400} size={titleSize}>
             Сотрудничаем
-            <br />с банками
+            {view === EView.DESC && <br />} с банками
           </Text>
           <div className={styles.border} />
         </div>

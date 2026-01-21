@@ -37,10 +37,12 @@ type Props = {
 
   /**
    * Новый режим:
-   * - true: две карточки по центру (1x), боковые -30% (0.7), листание по 1, с анимацией
-   * - false/undefined: простой горизонтальный режим (как раньше в новом режиме)
+   * - centered: две карточки по центру (1x), боковые -30% (0.7), листание по 1, с анимацией
+   * - singleCentered: одна карточка по центру (как на скрине), листание по 1, с анимацией
+   * - false/undefined: простой горизонтальный режим
    */
   centered?: boolean;
+  singleCentered?: boolean;
 
   /** Используется в простом новом режиме и в старом режиме (скролл) */
   scrollStepRatio?: number;
@@ -48,6 +50,7 @@ type Props = {
   /** Расстояние между айтемами (px) в items-режимах. По умолчанию 32 */
   gap?: number;
 
+  /** Явная ширина карточек в centered-режиме (опционально) */
   rowItemsWidth?: string;
 };
 
@@ -57,24 +60,34 @@ const clamp = (v: number, min: number, max: number) =>
 export const Gallery = ({
   items,
   centered = false,
+  singleCentered = false,
   scrollStepRatio = 0.8,
   gap = 32,
   rowItemsWidth,
 }: Props) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  // ===========================
-  // NEW MODE: items передан
-  // ===========================
   if (items !== undefined) {
+    const isSingleCentered = singleCentered === true;
+    const isCenteredMode = centered === true || isSingleCentered;
+
     // ---------- centered mode ----------
-    if (centered) {
+    if (isCenteredMode) {
       const n = items.length;
-      const isTiny = n < 2;
+
+      const maxStart = isSingleCentered ? Math.max(0, n - 1) : Math.max(0, n - 2);
 
       const getInitialIndex = (len: number) => {
+        if (len <= 0) return 0;
+
+        if (isSingleCentered) {
+          // показываем элемент по центру массива
+          return clamp(Math.floor((len - 1) / 2), 0, Math.max(0, len - 1));
+        }
+
+        // показываем пару по центру массива
         if (len < 2) return 0;
-        return clamp(Math.floor((len - 2) / 2), 0, len - 2);
+        return clamp(Math.floor((len - 2) / 2), 0, Math.max(0, len - 2));
       };
 
       type CenterState = {
@@ -109,7 +122,6 @@ export const Gallery = ({
         initialState,
       );
 
-      // размеры храним в ref, чтобы не зависеть от transform
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const dimsRef = useRef({
         wrapperW: 0,
@@ -126,13 +138,10 @@ export const Gallery = ({
         const wrapper = scrollRef.current;
         if (!wrapper) return;
 
-        const track = wrapper.querySelector<HTMLElement>(
-          '[data-gallery-track="center"]',
-        );
         const firstItem = wrapper.querySelector<HTMLElement>(
           '[data-gallery-item="center"]',
         );
-        if (!track || !firstItem) return;
+        if (!firstItem) return;
 
         const measure = () => {
           // offsetWidth не учитывает scale(transform)
@@ -163,40 +172,38 @@ export const Gallery = ({
         };
       }, [n]);
 
-      // если длина изменилась — сбросить активную пару в центр
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useLayoutEffect(() => {
         dispatch({ type: 'resetToMiddle', len: n });
         forceRerender();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [n]);
+      }, [n, isSingleCentered]);
 
       const goPrev = () => {
-        if (isTiny) return;
+        if (maxStart <= 0) return;
         dispatch({
           type: 'setActiveStart',
-          value: clamp(state.activeStart - 1, 0, n - 2),
+          value: clamp(state.activeStart - 1, 0, maxStart),
         });
       };
 
       const goNext = () => {
-        if (isTiny) return;
+        if (maxStart <= 0) return;
         dispatch({
           type: 'setActiveStart',
-          value: clamp(state.activeStart + 1, 0, n - 2),
+          value: clamp(state.activeStart + 1, 0, maxStart),
         });
       };
 
       const translateX = (() => {
-        if (isTiny) return 0;
+        if (n <= 0) return 0;
 
         const { itemW, wrapperW } = dimsRef.current;
         if (!itemW || !wrapperW) return 0;
 
-        const pairW = itemW * 2 + gap;
-        const centerOffset = (wrapperW - pairW) / 2;
+        const visibleW = isSingleCentered ? itemW : itemW * 2 + gap;
+        const centerOffset = (wrapperW - visibleW) / 2;
 
-        // центрируем пару (activeStart, activeStart+1)
         return centerOffset - state.activeStart * (itemW + gap);
       })();
 
@@ -227,15 +234,16 @@ export const Gallery = ({
               }}
             >
               {items.map((it, index) => {
-                const isCenter =
-                  !isTiny &&
-                  (index === state.activeStart || index === state.activeStart + 1);
+                const isCenter = isSingleCentered
+                  ? index === state.activeStart
+                  : index === state.activeStart || index === state.activeStart + 1;
 
                 return (
                   <div
                     key={it.key ?? index}
                     className={[
                       styles.rowItemCentered,
+                      // Если rowItemsWidth задан — не уменьшаем боковые (как у тебя было)
                       isCenter || rowItemsWidth
                         ? styles.rowItemCenteredActive
                         : styles.rowItemCenteredSide,
@@ -298,9 +306,9 @@ export const Gallery = ({
     );
   }
 
-  // ============================================================
-  // OLD MODE: items НЕ передан → ВЕСЬ СТАРЫЙ КОД БЕЗ ИЗМЕНЕНИЙ
-  // ============================================================
+  // ================================
+  // OLD MODE: items НЕ передан
+  // ================================
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const baseImages: ImgItem[] = useMemo(
