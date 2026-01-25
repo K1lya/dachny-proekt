@@ -8,10 +8,20 @@
   align-items: center;
 }
 
+.rootTablet {
+  padding: 40px 30px;
+}
+
 .border {
   margin-top: 24px;
   border-top: 6px solid #E85A4F;
   width: 106px;
+}
+
+.borderTablet {
+  margin-top: 10px;
+  border-top: 4px solid #E85A4F;
+  width: 70px;
 }
 
 .content {
@@ -21,6 +31,19 @@
   margin-top: 26px;
 }
 
+.contentTablet {
+  padding-left: 0;
+}
+
 .text {
   max-width: 500px;
+}
+
+.textTablet {
+  max-width: 340px;
+}
+
+.video {
+  width: 604px;
+  height: 439px;
 }

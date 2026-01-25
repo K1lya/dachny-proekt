@@ -1,17 +1,20 @@
 .root {
   width: 100%;
   background-color: #FEFCF3;
-  padding-top: 70px;
+  padding-top: 120px;
+  position: relative;
 }
 
 .rootTablet {
-  padding: 30px;
+  padding: 58px 30px 30px 30px;
 }
 
 .titleContainer {
   width: 100%;
   display: flex;
   justify-content: center;
+  top: 25px;
+  position: absolute;
 }
 
 .title {

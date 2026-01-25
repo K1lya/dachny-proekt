@@ -49,6 +49,7 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 100px;
+  position: relative;
 }
 
 .stageLine {
@@ -66,4 +67,10 @@
 .text {
   max-width: 344px;
   margin-left: 49px;
+}
+
+.button {
+  position: absolute;
+  bottom: 61px;
+  justify-self: center;
 }

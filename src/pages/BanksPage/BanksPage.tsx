@@ -23,14 +23,19 @@ export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
   return (
     <section className={clsx(styles.root, className)}>
       <div
-        className={clsx(styles.title, {
+        className={clsx({
           [styles.titleTablet]: view === EView.TABLET,
         })}
       >
-        <div className={styles.text}>
+        <div
+          className={clsx(styles.text, {
+            [styles.textTablet]: view === EView.TABLET,
+          })}
+        >
           <Text weight={400} size={titleSize}>
             Сотрудничаем
-            {view === EView.DESC && <br />} с банками
+            {view === EView.DESC && <br />}
+            {view === EView.TABLET && ' '}с банками
           </Text>
           <div className={styles.border} />
         </div>

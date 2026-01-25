@@ -45,7 +45,7 @@ export const WorkCard: React.FC<WorkCardProps> = memo(
     };
 
     return (
-      <div className={clsx(styles.block, isCompact && styles.blockCompact)}>
+      <div className={clsx(styles.block, isCompact && styles.blockTablet)}>
         <div className={styles.ellipse} />
         <span className={styles.border} />
 
@@ -53,7 +53,13 @@ export const WorkCard: React.FC<WorkCardProps> = memo(
           <Icon />
         </div>
 
-        <Text className={styles.title} weight={700} size='24px'>
+        <Text
+          className={clsx(styles.title, {
+            [styles.titleTablet]: view === EView.TABLET,
+          })}
+          weight={700}
+          size={`${view === EView.DESC ? 24 : 22}px`}
+        >
           {title}
         </Text>
 

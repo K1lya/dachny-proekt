@@ -60,17 +60,16 @@
   z-index: 1;
 }
 
-/* ===== Compact: только высота, чтобы карточка реально схлопывалась ===== */
-.blockCompact {
+.blockTablet {
   height: fit-content;
-  zoom: 0.6;
+  zoom: 0.8;
 }
 
 /* ===== Toggle button ===== */
 .toggleBtn {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 60px;
+  right: 16px;
 
   width: 36px;
   height: 36px;

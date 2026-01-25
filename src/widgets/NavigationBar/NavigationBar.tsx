@@ -75,7 +75,7 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
           styles.root,
           {
             [styles.rootBottom]: position === 'bottom',
-            [styles.rootTablet]: view === EView.TABLET,
+            [styles.rootTablet]: view === EView.TABLET && position === 'bottom',
           },
           className,
         )}
@@ -99,7 +99,7 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
               {view === EView.TABLET && getLogo(position, view)}
               <div className={styles.address}>
                 {view === EView.TABLET && (
-                  <Text weight={600} size={'17px'}>
+                  <Text weight={600} size={'17px'} color={'#EAE7DC'}>
                     +7 960 734 6828
                   </Text>
                 )}
@@ -187,7 +187,9 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
       </header>
       {position === 'bottom' && (
         <div
-          className={styles.bottomInfo}
+          className={clsx(styles.bottomInfo, {
+            [styles.bottomInfoTablet]: view === EView.TABLET,
+          })}
           style={view === EView.DESC ? { paddingLeft: `${margin}px` } : undefined}
         >
           <Text color={'#8E8D8A'}>© 2025 Дачный Проект</Text>

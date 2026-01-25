@@ -1,0 +1,39 @@
+.root {
+  display: flex;
+  gap: 24px;
+}
+
+.infoText {
+  max-width: 500px;
+  margin-top: 27px;
+  display: block;
+}
+
+.border {
+  width: 70px;
+  border-top: 4px solid #E85A4F;
+  margin-top: 10px;
+  margin-left: 102px;
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: min-content;
+}
+
+.img {
+  height: 147px;
+  width: 188px;
+  align-self: start;
+}
+
+.title {
+  margin-left: 78px;
+}
+
+.titleContainer {
+  margin-top: 22px;
+  width: 100%;
+}

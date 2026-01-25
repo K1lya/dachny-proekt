@@ -3,6 +3,7 @@ import Image from '@/shared/assets/backgrounds/DachaProject.svg?react';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import clsx from 'clsx';
 import { EView, useView } from '@/shared/hooks/useView.ts';
+import { Button } from '@/shared/ui/Button/Button.tsx';
 
 export const WorkStagesPage = () => {
   const view = useView();
@@ -100,6 +101,15 @@ export const WorkStagesPage = () => {
             </div>
           </div>
         </div>
+        <Button
+          width='322px'
+          height='61px'
+          fontSize='19px'
+          weight={600}
+          className={styles.button}
+        >
+          ОСТАВИТЬ ЗАЯВКУ
+        </Button>
       </div>
     </section>
   );

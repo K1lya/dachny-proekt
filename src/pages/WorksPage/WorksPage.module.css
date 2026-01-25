@@ -9,6 +9,14 @@
   padding-bottom: 80px;
 }
 
+.rootTablet {
+  flex-direction: column;
+  height: auto;
+  gap: 24px;
+  padding-bottom: 40px;
+  padding-top: 45px;
+}
+
 .works {
   position: relative;
   display: grid;
@@ -19,40 +27,14 @@
   top: 20px;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.infoText {
-  max-width: 322px;
-}
-
-.border {
-  width: 106px;
-  border-top: 6px solid #E85A4F;
-  margin-top: 25px;
-}
-
-.image {
-  position: relative;
+.worksTablet {
   display: flex;
   justify-content: center;
-  z-index: 0;
-  top: 20px;
+  flex-wrap: wrap;
+  width: 708px;
+  margin-top: 80px;
 }
 
-.img {
-  height: 210px;
-  left: 20px;
-}
-
-.button {
-  z-index: 2;
-  position: relative;
-}
-
-.buttonContainer {
-  position: relative;
+.buttonTablet {
+  margin-top: 24px;
 }

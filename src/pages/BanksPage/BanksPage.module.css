@@ -6,17 +6,19 @@
   /*align-items: center;*/
 }
 
+.text {
+  margin-left: 320px;
+  width: 1220px;
+}
+
 .titleTablet {
   align-items: start;
   padding-left: 30px;
 }
 
-.text {
-  width: 1220px;
-}
-
 .textTablet {
-  width: auto;
+  width: max-content;
+  margin-left: 0;
 }
 
 .border {

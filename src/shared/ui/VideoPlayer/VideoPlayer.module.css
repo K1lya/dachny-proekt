@@ -1,0 +1,47 @@
+.root {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  height: 438px;
+  width: 604px;
+}
+
+.rootTablet {
+  width: 344px;
+  height: 250px;
+}
+
+.video {
+  width: 100%;
+  display: block;
+}
+
+.playButton {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.playButton:hover {
+  background: rgba(255, 255, 255, 0.65);
+  transform: scale(1.03);
+}
+
+.playButton:active {
+  transform: scale(0.96);
+}

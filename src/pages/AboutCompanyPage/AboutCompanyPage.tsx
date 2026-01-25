@@ -1,30 +1,42 @@
-import type { FC, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import styles from './AboutCompanyPage.module.css';
 import { Text } from '@/shared/ui/Text/Text.tsx';
+import video from '@/shared/assets/video/sample-5s.mp4';
+import { VideoPlayer } from '@/shared/ui/VideoPlayer/VideoPlayer.tsx';
+import poster from '@/shared/assets/images/videoPoster.png';
+import { EView, useView } from '@/shared/hooks/useView.ts';
 
-interface AboutCompanyPageProps {
-  className?: string;
-}
-
-export const AboutCompanyPage: FC<PropsWithChildren<AboutCompanyPageProps>> = (
-  props,
-) => {
-  // consts
-  const { className } = props;
+export const AboutCompanyPage = () => {
+  const view = useView();
   return (
-    <section className={clsx(styles.root, className)}>
-      <div>
+    <section
+      className={clsx(styles.root, { [styles.rootTablet]: view === EView.TABLET })}
+    >
+      <div style={{ width: view === EView.DESC ? 'auto' : '100%' }}>
         <div>
-          <Text weight={400} size={'56px'}>
+          <Text weight={400} size={view === EView.DESC ? '56px' : '36px'}>
             О компании
-            <br />
+            {view === EView.DESC ? <br /> : ' '}
             "Дачный проект"
           </Text>
-          <div className={styles.border} />
+          <div
+            className={clsx(styles.border, {
+              [styles.borderTablet]: view === EView.TABLET,
+            })}
+          />
         </div>
-        <div className={styles.content}>
-          <Text className={styles.text} weight={400} size={'18px'}>
+        <div
+          className={clsx(styles.content, {
+            [styles.contentTablet]: view === EView.TABLET,
+          })}
+        >
+          <Text
+            className={clsx(styles.text, {
+              [styles.textTablet]: view === EView.TABLET,
+            })}
+            weight={400}
+            size={view === EView.DESC ? '18px' : '15px'}
+          >
             Опыт работы более 10 лет! Построенные объекты и довольные клиенты говорят
             сами за себя! Каждому клиенту предлагается экскурсия по уже завершённым
             проектам — вы лично убедитесь в качестве наших работ.
@@ -43,7 +55,7 @@ export const AboutCompanyPage: FC<PropsWithChildren<AboutCompanyPageProps>> = (
             <br />
             Участникам СВО предоставляем скидки.
           </Text>
-          <video src={'https://vksport.vkvideo.ru/video-16824047_456254517'} />
+          <VideoPlayer src={video} poster={poster} />
         </div>
       </div>
     </section>

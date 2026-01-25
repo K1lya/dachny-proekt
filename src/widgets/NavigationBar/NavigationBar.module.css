@@ -94,3 +94,11 @@
   align-items: center;
   gap: 142px;
 }
+
+.rootTablet {
+  padding: 40px 30px;
+}
+
+.bottomInfoTablet{
+  padding-left: 30px;
+}

@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.buttonContainer {
+  position: relative;
+}
+
+.infoText {
+  max-width: 322px;
+}
+
+.border {
+  width: 106px;
+  border-top: 6px solid #E85A4F;
+  margin-top: 25px;
+}
+
+.button {
+  z-index: 2;
+  position: relative;
+}
+
+.image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  top: 20px;
+}
+
+.img {
+  height: 210px;
+  left: 20px;
+}
