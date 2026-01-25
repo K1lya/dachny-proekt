@@ -21,7 +21,7 @@ export default defineConfig({
         buildMode: true,
       },
       eslint: {
-        lintCommand: 'eslint "./src/**/*.{ts,tsx}" --config eslint.config.js',
+        lintCommand: 'eslint "./src/**/*.{ts,tsx}" --config eslint.config.mjs',
         useFlatConfig: true,
       },
     }),
