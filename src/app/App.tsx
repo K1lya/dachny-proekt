@@ -1,5 +1,4 @@
 import { FirstPage } from '@/pages/FirstPage';
-import { SecondPage } from '@/pages/SecondPage';
 import { GalleryPage } from '@/pages/GalleryPage';
 import { PutBidPage } from '@/pages/PutBidPage';
 import { WorkStagesPage } from '@/pages/WorkStagesPage';
@@ -9,6 +8,7 @@ import { AboutCompanyPage } from '@/pages/AboutCompanyPage';
 import { ClientWordsPage } from '@/pages/ClientWordsPage';
 import { BanksPage } from '@/pages/BanksPage';
 import { NavigationBar } from '@/widgets/NavigationBar';
+import { SecondPage } from '@/pages/SecondPage';
 
 function App() {
   return (

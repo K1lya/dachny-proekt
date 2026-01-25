@@ -25,6 +25,7 @@ export const ServicesPrice: FC<PropsWithChildren<ServicesPriceProps>> = (props) 
       className={clsx(
         styles.root,
         { [styles.rootTable]: view === EView.TABLET },
+        { [styles.rootMobile]: view === EView.MOBILE },
         className,
       )}
     >

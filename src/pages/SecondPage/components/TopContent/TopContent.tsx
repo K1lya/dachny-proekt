@@ -18,11 +18,18 @@ export const TopContent: FC<PropsWithChildren<TopContentProps>> = (props) => {
       className={clsx(
         styles.root,
         { [styles.rootTable]: view === EView.TABLET },
+        { [styles.rootMobile]: view === EView.MOBILE },
         className,
       )}
     >
       {topIcons.map((icon) => (
-        <IconText key={icon.text} icon={icon.icon} text={icon.text} />
+        <IconText
+          key={icon.text}
+          icon={icon.icon}
+          text={icon.text}
+          textSize={'12px'}
+          className={view === EView.MOBILE ? styles.iconTextMobile : undefined}
+        />
       ))}
     </div>
   );

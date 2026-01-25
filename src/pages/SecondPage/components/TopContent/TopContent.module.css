@@ -12,3 +12,18 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
+
+.rootMobile {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iconTextMobile.iconTextMobile {
+  gap: 35px;
+}
+
+.iconTextMobile:first-child {
+  gap: 42px;
+}

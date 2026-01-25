@@ -8,3 +8,11 @@
 .text {
   white-space: break-spaces;
 }
+
+.textMobile {
+  width: 100%;
+}
+
+.icon {
+  zoom: 0.7;
+}

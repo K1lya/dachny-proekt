@@ -17,7 +17,7 @@ export const BottomContent: FC<PropsWithChildren<BottomContentProps>> = (props) 
     <div
       className={clsx(
         styles.root,
-        { [styles.rootTable]: view === EView.TABLET },
+        { [styles.rootMobile]: view === EView.MOBILE },
         className,
       )}
     >

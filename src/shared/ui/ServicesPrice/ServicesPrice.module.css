@@ -12,6 +12,10 @@
   zoom: 0.6;
 }
 
+.rootMobile {
+  zoom: 0.45;
+}
+
 .circleWrapper {
   position: relative;
   left: 45px;

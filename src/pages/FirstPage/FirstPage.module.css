@@ -12,3 +12,9 @@
   padding: 0 30px;
   height: 768px;
 }
+
+.rootMobile {
+  background-image: url('@/shared/assets/backgrounds/1stscreen_tablet_mobile.png');
+  height: 280px;
+  padding: 5px 20px;
+}

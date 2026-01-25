@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.rootMobile {
+  height: 800px;
+}
+
 .content {
   position: absolute;
   display: flex;
@@ -20,4 +24,9 @@
 
 .contentTablet {
   width: 708px;
+}
+
+.contentMobile {
+  bottom: auto;
+  width: 100%;
 }

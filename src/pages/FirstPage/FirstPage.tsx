@@ -17,6 +17,7 @@ export const FirstPage: FC<PropsWithChildren<FirstPageProps>> = (props) => {
       className={clsx(
         styles.root,
         { [styles.rootTablet]: view === EView.TABLET },
+        { [styles.rootMobile]: view === EView.MOBILE },
         className,
       )}
     >
