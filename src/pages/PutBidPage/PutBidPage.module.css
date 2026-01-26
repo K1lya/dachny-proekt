@@ -11,6 +11,10 @@
   padding: 0;
 }
 
+.rootMobile {
+  padding: 0;
+}
+
 .image {
   height: 80vh;
   width: 1376px;
@@ -28,6 +32,13 @@
   height: 430px;
 }
 
+.imageMobile {
+  background-image: url('@/shared/assets/backgrounds/bidMobile.png');
+  width: 100%;
+  padding: 0;
+  height: 260px;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -40,6 +51,10 @@
 
 .contentTable {
   padding-top: 6vh;
+}
+
+.contentMobile {
+  padding-top: 23px;
 }
 
 .text {
@@ -95,4 +110,11 @@
 .buttonTablet {
   width: 262px;
   height: 48px;
+}
+
+.buttonContainerMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-bottom: 20px;
 }
