@@ -4,6 +4,7 @@
   overflow: visible;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
 }
 
@@ -29,4 +30,5 @@
 .contentMobile {
   bottom: auto;
   width: 100%;
+  align-items: center;
 }
