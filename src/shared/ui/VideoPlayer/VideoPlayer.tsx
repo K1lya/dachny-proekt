@@ -41,7 +41,10 @@ export const VideoPlayer: React.FC<Props> = memo(({ src, poster }) => {
 
   return (
     <div
-      className={clsx(styles.root, { [styles.rootTablet]: view === EView.TABLET })}
+      className={clsx(styles.root, {
+        [styles.rootTablet]: view === EView.TABLET,
+        [styles.rootMobile]: view === EView.MOBILE,
+      })}
     >
       <video
         ref={videoRef}

@@ -12,6 +12,10 @@
   padding: 40px 30px;
 }
 
+.rootMobile {
+  padding: 32px 20px;
+}
+
 .border {
   margin-top: 24px;
   border-top: 6px solid #E85A4F;
@@ -24,6 +28,12 @@
   width: 70px;
 }
 
+.borderMobile {
+  margin-top: 10px;
+  border-width: 2px;
+  width: 42px;
+}
+
 .content {
   display: flex;
   gap: 32px;
@@ -33,6 +43,11 @@
 
 .contentTablet {
   padding-left: 0;
+}
+
+.contentMobile {
+  flex-direction: column-reverse;
+  padding: 0;
 }
 
 .text {

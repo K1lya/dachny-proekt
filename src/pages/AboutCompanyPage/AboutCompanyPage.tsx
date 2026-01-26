@@ -10,24 +10,34 @@ export const AboutCompanyPage = () => {
   const view = useView();
   return (
     <section
-      className={clsx(styles.root, { [styles.rootTablet]: view === EView.TABLET })}
+      className={clsx(styles.root, {
+        [styles.rootTablet]: view === EView.TABLET,
+        [styles.rootMobile]: view === EView.MOBILE,
+      })}
     >
       <div style={{ width: view === EView.DESC ? 'auto' : '100%' }}>
         <div>
-          <Text weight={400} size={view === EView.DESC ? '56px' : '36px'}>
+          <Text
+            weight={400}
+            size={
+              view === EView.DESC ? '56px' : view === EView.MOBILE ? '24px' : '36px'
+            }
+          >
             О компании
-            {view === EView.DESC ? <br /> : ' '}
+            {view === EView.DESC || view === EView.MOBILE ? <br /> : ' '}
             "Дачный проект"
           </Text>
           <div
             className={clsx(styles.border, {
               [styles.borderTablet]: view === EView.TABLET,
+              [styles.borderMobile]: view === EView.MOBILE,
             })}
           />
         </div>
         <div
           className={clsx(styles.content, {
             [styles.contentTablet]: view === EView.TABLET,
+            [styles.contentMobile]: view === EView.MOBILE,
           })}
         >
           <Text
