@@ -48,6 +48,7 @@
 .contentMobile {
   flex-direction: column-reverse;
   padding: 0;
+  align-items: center;
 }
 
 .text {
