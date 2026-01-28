@@ -27,18 +27,12 @@ export const OurClientsCard: FC<PropsWithChildren<OurClientsCardProps>> = (
     >
       {view !== EView.MOBILE ? (
         <>
-          <img
-            src={props.icon}
-            className={clsx(styles.img, {
-              [styles.imgMobile]: view === EView.MOBILE,
-            })}
-            alt={props.icon}
-          />
+          <img src={props.icon} className={clsx(styles.img)} alt={props.icon} />
           <div>
-            <Text weight={700} size={view === EView.MOBILE ? '12px' : '22px'}>
+            <Text weight={700} size={'22px'}>
               {props.title}
             </Text>
-            {view !== EView.MOBILE && <div className={styles.border} />}
+            <div className={styles.border} />
           </div>
         </>
       ) : (
