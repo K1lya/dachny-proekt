@@ -21,19 +21,33 @@ export const OurClientsPage: FC<PropsWithChildren<OurClientsPageProps>> = (
       className={clsx(
         styles.root,
         { [styles.rootTable]: view === EView.TABLET },
+        { [styles.rootMobile]: view === EView.MOBILE },
         className,
       )}
     >
-      <div className={clsx({ [styles.containerTable]: view === EView.TABLET })}>
+      <div
+        className={clsx({
+          [styles.containerTable]: view === EView.TABLET,
+          [styles.containerMobile]: view === EView.MOBILE,
+        })}
+      >
         <div>
-          <Text weight={400} size={'56px'}>
+          <Text weight={400} size={view === EView.MOBILE ? '24px' : '56px'}>
             Что ценят в нас
             <br />
             наши клиенты
           </Text>
-          <div className={styles.border} />
+          <div
+            className={clsx(styles.border, {
+              [styles.borderMobile]: view === EView.MOBILE,
+            })}
+          />
         </div>
-        <div className={styles.content}>
+        <div
+          className={clsx(styles.content, {
+            [styles.contentMobile]: view === EView.MOBILE,
+          })}
+        >
           {ourClients.map((our) => (
             <OurClientsCard
               key={our.title}

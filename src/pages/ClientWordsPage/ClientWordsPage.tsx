@@ -17,7 +17,8 @@ export const ClientWordsPage: FC<PropsWithChildren<ClientWordsPageProps>> = (
   // consts
   const { className } = props;
   const view = useView();
-  const titleSize = view === EView.TABLET ? '32px' : '56px';
+  const titleSize =
+    view === EView.TABLET ? '32px' : view === EView.MOBILE ? '24px' : '56px';
   const items = clientsWords.map((item) => ({
     key: item.name,
     node: (
