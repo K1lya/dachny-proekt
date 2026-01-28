@@ -11,6 +11,8 @@
   background-color: #FFFFFF;
   border-radius: 10px;
   flex-shrink: 0;
+  padding: 15px;
+  overflow: hidden;
 }
 
 .img {
@@ -31,12 +33,7 @@
 }
 
 .titleMobile {
-  padding: 15px;
   display: flex;
   align-items: center;
   gap: 15px;
-}
-
-.text {
-  padding: 15px;
 }

@@ -17,6 +17,7 @@ export const OurClientsCard: FC<PropsWithChildren<OurClientsCardProps>> = (
   // consts
   const { className } = props;
   const view = useView();
+
   return (
     <div
       className={clsx(
@@ -50,7 +51,7 @@ export const OurClientsCard: FC<PropsWithChildren<OurClientsCardProps>> = (
         </div>
       )}
       <Text className={clsx(view === EView.MOBILE && styles.text)}>
-        {props.text}
+        {view !== EView.MOBILE ? props.text : props.text.slice(0, 178) + '...'}
       </Text>
     </div>
   );
