@@ -76,8 +76,9 @@
 }
 
 .blockMobile {
-  zoom: 1;
+  zoom: normal;
   padding: 8px 17px 8px 8px;
+  width: 100%;
 }
 
 /* ===== Toggle button ===== */
