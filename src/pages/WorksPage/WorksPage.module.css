@@ -17,6 +17,13 @@
   padding-top: 45px;
 }
 
+.rootMobile {
+  flex-direction: column;
+  height: auto;
+  gap: 20px;
+  padding: 34px 20px 0 20px;
+}
+
 .works {
   position: relative;
   display: grid;
@@ -35,6 +42,17 @@
   margin-top: 80px;
 }
 
+.worksMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  top: 0;
+}
+
 .buttonTablet {
   margin-top: 24px;
+}
+
+.buttonMobile {
+  margin-top: 0;
 }

@@ -52,8 +52,18 @@
   top: -40px;
 }
 
+.iconMobile {
+  zoom: 0.5;
+}
+
 .title {
   z-index: 1;
+}
+
+.titleBlockMobile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .text {
@@ -63,6 +73,11 @@
 .blockTablet {
   height: fit-content;
   zoom: 0.8;
+}
+
+.blockMobile {
+  zoom: 1;
+  padding: 8px 17px 8px 8px;
 }
 
 /* ===== Toggle button ===== */
@@ -111,4 +126,12 @@
 /* compact container */
 .textWrapCompact {
   overflow: hidden;
+}
+
+.textWrapMobile {
+  padding: 0 20px 20px 20px;
+}
+
+.toggleBtnMobile {
+  top: 28px;
 }

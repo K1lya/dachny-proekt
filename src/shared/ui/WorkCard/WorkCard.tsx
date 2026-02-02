@@ -42,32 +42,57 @@ export const WorkCard: React.FC<WorkCardProps> = memo(
     };
 
     return (
-      <div className={clsx(styles.block, isCompact && styles.blockTablet)}>
-        <div className={styles.ellipse} />
-        <span className={styles.border} />
+      <div
+        className={clsx(
+          styles.block,
+          isCompact && styles.blockTablet,
+          view === EView.MOBILE && styles.blockMobile,
+        )}
+      >
+        {view !== EView.MOBILE && (
+          <>
+            <div className={styles.ellipse} />
+            <span className={styles.border} />
 
-        <div className={styles.icon}>
-          <Icon />
-        </div>
+            <div className={styles.icon}>
+              <Icon />
+            </div>
+          </>
+        )}
 
-        <Text
-          className={clsx(styles.title, {
-            [styles.titleTablet]: view === EView.TABLET,
-          })}
-          weight={700}
-          size={`${view === EView.DESC ? 24 : 22}px`}
-        >
-          {title}
-        </Text>
+        {view !== EView.MOBILE ? (
+          <Text
+            className={clsx(styles.title, {
+              [styles.titleTablet]: view === EView.TABLET,
+            })}
+            weight={700}
+            size={`${view === EView.DESC ? 24 : 22}px`}
+          >
+            {title}
+          </Text>
+        ) : (
+          <div className={styles.titleBlockMobile}>
+            <div className={styles.iconMobile}>
+              <Icon />
+            </div>
+            <Text size={'12px'} weight={600}>
+              {title}
+            </Text>
+          </div>
+        )}
 
-        {/* кнопка только для TABLET/MOBILE */}
         {isCompact && (
-          <button type='button' className={styles.toggleBtn} onClick={onToggle}>
+          <button
+            type='button'
+            className={clsx(styles.toggleBtn, {
+              [styles.toggleBtnMobile]: view === EView.MOBILE,
+            })}
+            onClick={onToggle}
+          >
             <Chevron isOpen={isOpen} />
           </button>
         )}
 
-        {/* ===== НИЖНЯЯ ЧАСТЬ ===== */}
         {!isCompact && (
           <div className={styles.textWrap}>
             <Text className={styles.text} size='16px'>
@@ -79,7 +104,9 @@ export const WorkCard: React.FC<WorkCardProps> = memo(
         {isCompact && isOpen && (
           <div
             style={{ display: isOpen ? 'inline' : 'none' }}
-            className={clsx(styles.textWrap, styles.textWrapCompact)}
+            className={clsx(styles.textWrap, styles.textWrapCompact, {
+              [styles.textWrapMobile]: view === EView.MOBILE,
+            })}
           >
             <Text className={styles.text} size='16px'>
               {text}

@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.border {
+  width: 42px;
+  border-top: 2px solid #E85A4F;
+  margin-top: 10px;
+}
+
+.title {
+  margin-top: 5px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.text {
+  margin-top: 20px;
+}

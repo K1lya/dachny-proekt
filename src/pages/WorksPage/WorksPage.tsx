@@ -6,19 +6,25 @@ import clsx from 'clsx';
 import { DescInfo } from './components/DescInfo/DescInfo.tsx';
 import { TabletInfo } from './components/TabletInfo/TabletInfo.tsx';
 import { Button } from '@/shared/ui/Button/Button.tsx';
+import { MobileInfo } from './components/MobileInfo/MobileInfo.tsx';
 
 export const WorksPage = () => {
   // consts
   const view = useView();
   return (
     <section
-      className={clsx(styles.root, { [styles.rootTablet]: view === EView.TABLET })}
+      className={clsx(styles.root, {
+        [styles.rootTablet]: view === EView.TABLET,
+        [styles.rootMobile]: view === EView.MOBILE,
+      })}
     >
       {view === EView.DESC && <DescInfo />}
       {view === EView.TABLET && <TabletInfo />}
+      {view === EView.MOBILE && <MobileInfo />}
       <div
         className={clsx(styles.works, {
           [styles.worksTablet]: view === EView.TABLET,
+          [styles.worksMobile]: view === EView.MOBILE,
         })}
       >
         {works.map((work) => (
@@ -27,11 +33,13 @@ export const WorksPage = () => {
       </div>
       {view !== EView.DESC && (
         <Button
-          width={'219px'}
+          width={view === EView.MOBILE ? '100%' : '219px'}
           weight={600}
           height={'44px'}
           fontSize={'16px'}
-          className={styles.buttonTablet}
+          className={clsx(styles.buttonTablet, {
+            [styles.buttonMobile]: view === EView.MOBILE,
+          })}
         >
           ОСТАВИТЬ ЗАЯВКУ
         </Button>
