@@ -15,10 +15,17 @@ export const IconButton: FC<PropsWithChildren<IconButtonProps>> = (props) => {
   const [hovered, setHovered] = useState(false);
 
   const computedIcon = hovered && hoverIcon ? hoverIcon : icon;
+
+  const onHover = () => {
+    const isTouchDevice = window.matchMedia(
+      '(hover: none) and (pointer: coarse)',
+    ).matches;
+    if (!isTouchDevice) setHovered(true);
+  };
   return (
     <div
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={onHover}
       onMouseLeave={() => setHovered(false)}
       className={clsx(styles.root, className)}
     >

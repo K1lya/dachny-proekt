@@ -17,7 +17,8 @@ import TelegramIcon from '@/shared/assets/icons/telegram.svg?react';
 import TelegramHoveredIcon from '@/shared/assets/icons/telegramHover.svg?react';
 import WhatsAppIcon from '@/shared/assets/icons/whatsapp.svg?react';
 import WhatsAppHoveredIcon from '@/shared/assets/icons/whatsappHover.svg?react';
-import SandwitchIcon from '@/shared/assets/icons/sandwitch.svg?react';
+import SandwichIcon from '@/shared/assets/icons/sandwitch.svg?react';
+import SandwichIconMobile from '@/shared/assets/icons/sandwichIconMobile.svg?react';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { IconButton } from '@/shared/ui/IconButton/IconButton.tsx';
 import { Button } from '@/shared/ui/Button/Button.tsx';
@@ -68,6 +69,33 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
     }
   }, []);
 
+  if (view === EView.MOBILE) {
+    return (
+      <>
+        <header className={styles.rootMobile}>
+          <LogoMobile className={styles.logoMobile} />
+          <div className={styles.contentMobile}>
+            <div className={styles.topContentMobile}>
+              <Text size={'12px'} weight={600}>
+                +7 960 734 6828
+              </Text>
+              <IconButton
+                icon={<TelegramIcon />}
+                hoverIcon={<TelegramHoveredIcon />}
+              />
+              <IconButton
+                icon={<WhatsAppIcon />}
+                hoverIcon={<WhatsAppHoveredIcon />}
+              />
+            </div>
+            <Text size={'11px'}>г. Владимир, ул. Куйбышева, 16А</Text>
+          </div>
+          <IconButton icon={<SandwichIconMobile />} className={styles.iconMobile} />
+        </header>
+      </>
+    );
+  }
+
   return (
     <>
       <header
@@ -104,26 +132,14 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
                   </Text>
                 )}
                 <Text
-                  size={
-                    view === EView.TABLET
-                      ? '12px'
-                      : view === EView.MOBILE
-                        ? '12px'
-                        : '14px'
-                  }
+                  size={view === EView.TABLET ? '12px' : '14px'}
                   weight={400}
                   color={position === 'bottom' ? '#FFFFFF' : undefined}
                 >
                   г. Владимир, ул. Куйбышева, 16A
                 </Text>
                 <Text
-                  size={
-                    view === EView.TABLET
-                      ? '12px'
-                      : view === EView.MOBILE
-                        ? '12px'
-                        : '14px'
-                  }
+                  size={view === EView.TABLET ? '12px' : '14px'}
                   weight={400}
                   color='#8E8D8A'
                 >
@@ -163,15 +179,11 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
                 [styles.linksTablet]: view === EView.TABLET,
               })}
             >
-              {view !== EView.MOBILE && (
-                <Button
-                  width={view === EView.TABLET ? '123px' : '217px'}
-                  weight={500}
-                >
-                  <SandwitchIcon style={{ marginRight: '10px' }} />
-                  Услуги
-                </Button>
-              )}
+              <Button width={view === EView.TABLET ? '123px' : '217px'} weight={500}>
+                <SandwichIcon style={{ marginRight: '10px' }} />
+                Услуги
+              </Button>
+
               {headerLinks.map((link) => (
                 <LinkButton
                   key={link.name}
