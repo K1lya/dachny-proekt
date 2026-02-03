@@ -182,3 +182,31 @@
 .rowItemCenteredMeasured {
   transition: transform 420ms ease;
 }
+
+.mobileContainer {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-top: 25px;
+  padding-bottom: 25px;
+  margin-left: 20px;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileContainer::-webkit-scrollbar {
+  height: 5px; /* толщина полосы */
+}
+
+/* трек (серый фон) */
+.mobileContainer::-webkit-scrollbar-track {
+  background: #d9d9d9;
+  border-radius: 999px;
+}
+
+/* ползунок (красный) */
+.mobileContainer::-webkit-scrollbar-thumb {
+  background: #E85A4F;
+  border-radius: 999px;
+}

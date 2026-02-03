@@ -9,12 +9,20 @@
   padding: 58px 30px 30px 30px;
 }
 
+.rootMobile {
+  padding: 32px 17px;
+}
+
 .titleContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   top: 25px;
   position: absolute;
+}
+
+.titleContainerMobile {
+  top: 35px;
 }
 
 .title {

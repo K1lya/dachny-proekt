@@ -52,6 +52,7 @@ type Props = {
 
   /** Явная ширина карточек в centered-режиме (опционально) */
   rowItemsWidth?: string;
+  isMobile?: boolean;
 };
 
 const clamp = (v: number, min: number, max: number) =>
@@ -64,6 +65,7 @@ export const Gallery = ({
   scrollStepRatio = 0.8,
   gap = 32,
   rowItemsWidth,
+  isMobile = false,
 }: Props) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -206,6 +208,14 @@ export const Gallery = ({
 
         return centerOffset - state.activeStart * (itemW + gap);
       })();
+
+      if (isMobile && items.length) {
+        return (
+          <div className={styles.mobileContainer} style={{ gap: `${gap}px` }}>
+            {items.map((el) => el.node)}
+          </div>
+        );
+      }
 
       return (
         <div className={styles.section}>

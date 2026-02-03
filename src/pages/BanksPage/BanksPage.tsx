@@ -14,14 +14,21 @@ export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
   // consts
   const { className } = props;
   const view = useView();
-  const titleSize = view === EView.TABLET ? '32px' : '56px';
+  const titleSize =
+    view === EView.TABLET ? '32px' : view === EView.MOBILE ? '24px' : '56px';
 
   const items = banks.map((item) => ({
     key: item,
     node: <img src={item} alt='bank' />,
   }));
   return (
-    <section className={clsx(styles.root, className)}>
+    <section
+      className={clsx(
+        styles.root,
+        { [styles.rootMobile]: view === EView.MOBILE },
+        className,
+      )}
+    >
       <div
         className={clsx({
           [styles.titleTablet]: view === EView.TABLET,
@@ -30,17 +37,28 @@ export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
         <div
           className={clsx(styles.text, {
             [styles.textTablet]: view === EView.TABLET,
+            [styles.textMobile]: view === EView.MOBILE,
           })}
         >
           <Text weight={400} size={titleSize}>
             Сотрудничаем
-            {view === EView.DESC && <br />}
+            {(view === EView.DESC || view === EView.MOBILE) && <br />}
             {view === EView.TABLET && ' '}с банками
           </Text>
-          <div className={styles.border} />
+          <div
+            className={clsx(styles.border, {
+              [styles.borderMobile]: view === EView.MOBILE,
+            })}
+          />
         </div>
       </div>
-      <Gallery items={items} centered rowItemsWidth='fit-content' gap={72} />
+      <Gallery
+        items={items}
+        centered
+        rowItemsWidth='fit-content'
+        gap={view === EView.MOBILE ? 23 : 72}
+        isMobile={view === EView.MOBILE}
+      />
     </section>
   );
 };

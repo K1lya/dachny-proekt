@@ -9,7 +9,8 @@
 .rootMobile {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: 21px;
+  justify-content: center;
 }
 
 .rootBottom {

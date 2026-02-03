@@ -10,6 +10,12 @@
   width: fit-content;
 }
 
+.rootMobile {
+  padding-bottom: 15px;
+  padding-right: 15px;
+  gap: 15px;
+}
+
 .images {
   display: flex;
   flex-direction: column;
@@ -70,8 +76,20 @@
   height: 180px;
 }
 
+.photoMobile {
+  width: 85px;
+  height: 85px;
+  border-radius: 25px;
+}
+
 .image {
   padding-left: 29px;
+}
+
+.imageMobile {
+  padding-left: 15px;
+  width: 80px;
+  height: 100px;
 }
 
 .avatar {
@@ -88,6 +106,10 @@
   padding-left: 40px;
 }
 
+.infoMobile {
+  padding-left: 15px;
+}
+
 .infoTextContainer {
   display: flex;
   flex-direction: column;
@@ -100,6 +122,10 @@
   gap: 36px
 }
 
+.topContainerMobile {
+  gap: 20px;
+}
+
 .bottomContainer {
   display: flex;
   justify-content: space-between;
@@ -109,6 +135,11 @@
 .text {
   width: 336px;
   padding-top: 40px;
+}
+
+.rootText {
+  width: 172px;
+  padding-top: 19px;
 }
 
 

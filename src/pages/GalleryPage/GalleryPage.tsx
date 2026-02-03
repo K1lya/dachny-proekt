@@ -18,14 +18,23 @@ export const GalleryPage: FC<PropsWithChildren<GalleryPageProps>> = (props) => {
       className={clsx(
         styles.root,
         { [styles.rootTablet]: view === EView.TABLET },
+        { [styles.rootMobile]: view === EView.MOBILE },
         className,
       )}
     >
-      <div className={styles.titleContainer}>
+      <div
+        className={clsx(styles.titleContainer, {
+          [styles.titleContainerMobile]: view === EView.MOBILE,
+        })}
+      >
         <Text
           weight={400}
-          size={view === EView.TABLET ? '36px' : '56px'}
-          className={styles.title}
+          size={
+            view === EView.TABLET ? '36px' : view === EView.MOBILE ? '16px' : '56px'
+          }
+          className={clsx(styles.title, {
+            [styles.titleContainerMobile]: view === EView.MOBILE,
+          })}
         >
           Вдохновляйтесь уютом,
           <br />

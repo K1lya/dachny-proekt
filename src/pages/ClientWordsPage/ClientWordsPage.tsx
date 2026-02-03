@@ -34,27 +34,41 @@ export const ClientWordsPage: FC<PropsWithChildren<ClientWordsPageProps>> = (
     ),
   }));
   return (
-    <section className={clsx(styles.root, className)}>
+    <section
+      className={clsx(
+        styles.root,
+        { [styles.rootMobile]: view === EView.MOBILE },
+        className,
+      )}
+    >
       <div
         className={clsx(styles.title, {
           [styles.titleTablet]: view === EView.TABLET,
+          [styles.titleMobile]: view === EView.MOBILE,
         })}
       >
         <div
           className={clsx(styles.text, {
             [styles.textTablet]: view === EView.TABLET,
+            [styles.textMobile]: view === EView.MOBILE,
           })}
         >
           <Text weight={400} size={titleSize}>
-            Ваши слова о нашей работе
+            Ваши слова о{view === EView.MOBILE ? <br /> : ' '}нашей работе
           </Text>
-          <div className={styles.border} />
+          <div
+            className={clsx(styles.border, {
+              [styles.borderMobile]: view === EView.MOBILE,
+            })}
+          />
         </div>
       </div>
       <Gallery
         items={items}
         centered
         singleCentered={view === EView.TABLET || view === EView.MOBILE}
+        isMobile={view === EView.MOBILE}
+        gap={view === EView.MOBILE ? 20 : undefined}
       />
     </section>
   );
