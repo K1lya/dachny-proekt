@@ -5,11 +5,13 @@
   overflow-x: hidden;
 }
 
-/* HEADER остаётся как был */
+.sectionMobile {
+  padding: 0;
+}
 
 .wrapper {
   --column-gap: 22px;
-  --column-base-width: 220px; /* должна совпадать с BASE_COLUMN_WIDTH в TS */
+  --column-base-width: 220px;
 
   overflow-x: hidden;
   overflow-y: hidden;
@@ -17,12 +19,32 @@
   margin: 0 auto;
 }
 
-.wrapper::-webkit-scrollbar {
-  height: 6px;
+.wrapperMobile {
+  --column-gap: 12px;
+  --column-base-width: 100px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 16px;
+  margin: 0 auto;
+
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  scrollbar-gutter: stable;
 }
 
-.wrapper::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.25);
+.wrapperMobile::-webkit-scrollbar {
+  height: 5px;
+}
+
+.wrapperMobile::-webkit-scrollbar-track {
+  background: #d9d9d9;
+  border-radius: 999px;
+}
+
+.wrapperMobile::-webkit-scrollbar-thumb {
+  background: #E85A4F;
   border-radius: 999px;
 }
 
@@ -36,12 +58,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--column-gap);
-  flex: 0 0 auto; /* ширина задаётся инлайном из TS */
+  flex: 0 0 auto;
 }
 
 .item {
   width: 100%;
-  border-radius: 18px;
+  border-radius: 8px;
   overflow: hidden;
   background: #eee;
 }
@@ -56,44 +78,9 @@
 .controls {
   display: flex;
   flex-direction: row;
-
   position: relative;
   left: 77%;
 }
-
-/* адаптив можно оставить как раньше, при желании подстроить base-width под брейкпоинты */
-@media (max-width: 1024px) {
-  .wrapper {
-    --column-base-width: 200px;
-  }
-
-  .title {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 768px) {
-  .wrapper {
-    --column-base-width: 180px;
-  }
-
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .controls {
-    align-self: flex-end;
-  }
-
-  .title {
-    font-size: 22px;
-  }
-}
-
-/* ============================================================
-   NEW MODE styles (items) — отдельные классы, старые не трогаем
-   ============================================================ */
 
 .wrapperRow {
   overflow-x: hidden;
@@ -102,15 +89,6 @@
   margin: 0 auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-}
-
-.wrapperRow::-webkit-scrollbar {
-  height: 6px;
-}
-
-.wrapperRow::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 999px;
 }
 
 .trackRow {
@@ -124,14 +102,6 @@
 .rowItem {
   flex: 0 0 auto;
 }
-
-/* ============================================================
-   CENTERED MODE (items + centered / singleCentered)
-   - centered: две карточки по центру
-   - singleCentered: одна карточка по центру
-   - боковые: scale(0.7)
-   - анимация: transform трека + scale элементов
-   ============================================================ */
 
 .wrapperRowCentered {
   overflow: hidden;
@@ -154,14 +124,14 @@
 
 .rowItemCentered {
   flex: 0 0 auto;
-
-  /* ВАЖНО: чтобы шаг был одинаковый.
-     Подгони под свой макет отзывов, если нужно. */
   width: 604px;
 
   transform-origin: center center;
   transition: transform 420ms ease;
   will-change: transform;
+
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .rowItemCenteredActive {
@@ -174,7 +144,6 @@
   z-index: 1;
 }
 
-/* Эти классы используются в TS, чтобы не было "рывка" до измерения размеров */
 .rowItemCenteredPre {
   transition: none;
 }
@@ -196,17 +165,86 @@
 }
 
 .mobileContainer::-webkit-scrollbar {
-  height: 5px; /* толщина полосы */
+  height: 5px;
 }
 
-/* трек (серый фон) */
 .mobileContainer::-webkit-scrollbar-track {
   background: #d9d9d9;
   border-radius: 999px;
 }
 
-/* ползунок (красный) */
 .mobileContainer::-webkit-scrollbar-thumb {
   background: #E85A4F;
   border-radius: 999px;
+}
+
+.mobileGalleryWrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 16px;
+
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  scrollbar-gutter: stable;
+}
+
+.mobileGalleryWrapper::-webkit-scrollbar {
+  height: 5px;
+}
+
+.mobileGalleryWrapper::-webkit-scrollbar-track {
+  background: #d9d9d9;
+  border-radius: 999px;
+}
+
+.mobileGalleryWrapper::-webkit-scrollbar-thumb {
+  background: #E85A4F;
+  border-radius: 999px;
+}
+
+.mobileGalleryTrack {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: max-content;
+}
+
+.mobileGalleryItem {
+  flex: 0 0 auto;
+  width: 100px;
+  max-height: 150px;
+
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.mobileGalleryItem > * {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    --column-base-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    --column-base-width: 180px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controls {
+    align-self: flex-end;
+  }
 }

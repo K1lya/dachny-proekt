@@ -22,7 +22,8 @@
 }
 
 .titleContainerMobile {
-  top: 35px;
+  position: relative;
+  top: -10px;
 }
 
 .title {

@@ -6,57 +6,85 @@ import ArrowLeft from '@/shared/assets/icons/arrowLeft.svg?react';
 import ArrowRight from '@/shared/assets/icons/arrowRight.svg?react';
 import ArrowLeftActive from '@/shared/assets/icons/arrowLeftActive.svg?react';
 import ArrowRightActive from '@/shared/assets/icons/arrowRightActive.svg?react';
+import clsx from 'clsx';
 
 const imageModules = import.meta.glob(
   '@/shared/assets/images/gallery/*.{jpg,jpeg,png,webp,avif}',
   { eager: true, as: 'url' },
 );
 
-// ===== OLD (не трогаем) =====
 const HEIGHT_VARIANTS = [190, 230, 270, 310, 350];
 const MAX_COLUMN_HEIGHT = 620;
 const VERTICAL_GAP = 22;
 const BASE_COLUMN_WIDTH = 220;
 const WIDTH_MULTIPLIERS = [1, 1, 1.5, 2, 2.5, 3];
 
+const MOBILE_MAX_ITEM_HEIGHT = 150;
+const MOBILE_MAX_ITEM_WIDTH = 100;
+const MOBILE_HEIGHT_VARIANTS = [70, 90, 110, 130, 150];
+const MOBILE_VERTICAL_GAP = 12;
+const MOBILE_MAX_COLUMN_HEIGHT = 320;
+
 type ImgItem = { src: string; height: number };
 type ColumnData = { images: ImgItem[]; width: number };
 
-// ===== NEW =====
 export type GalleryItem = {
   key?: React.Key;
   node: React.ReactNode;
 };
 
 type Props = {
-  /**
-   * Если передан items — включаем универсальный режим.
-   * Если НЕ передан — поведение 100% старое.
-   */
   items?: GalleryItem[];
 
-  /**
-   * Новый режим:
-   * - centered: две карточки по центру (1x), боковые -30% (0.7), листание по 1, с анимацией
-   * - singleCentered: одна карточка по центру (как на скрине), листание по 1, с анимацией
-   * - false/undefined: простой горизонтальный режим
-   */
   centered?: boolean;
   singleCentered?: boolean;
 
-  /** Используется в простом новом режиме и в старом режиме (скролл) */
   scrollStepRatio?: number;
-
-  /** Расстояние между айтемами (px) в items-режимах. По умолчанию 32 */
   gap?: number;
-
-  /** Явная ширина карточек в centered-режиме (опционально) */
   rowItemsWidth?: string;
+
   isMobile?: boolean;
+
+  mobileGallery?: boolean;
 };
 
 const clamp = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, v));
+
+const pickVariantByIndex = (index: number, variants: number[]) => {
+  const x = (index * 9301 + 49297) % 233280;
+  const r = x / 233280;
+  return variants[Math.floor(r * variants.length)];
+};
+
+const fillColumnHeightPreserveVariety = (
+  images: ImgItem[],
+  targetHeight: number,
+  gap: number,
+  capHeight: number,
+): ImgItem[] => {
+  if (images.length === 0) return images;
+
+  const totalHeights = images.reduce((s, i) => s + i.height, 0);
+  const totalGaps = gap * (images.length - 1);
+  let leftover = targetHeight - (totalHeights + totalGaps);
+
+  if (leftover <= 0) return images;
+
+  const result = images.map((i) => ({ ...i }));
+
+  for (let idx = result.length - 1; idx >= 0 && leftover > 0; idx -= 1) {
+    const current = result[idx].height;
+    const canAdd = Math.max(0, capHeight - current);
+    if (canAdd <= 0) continue;
+
+    const add = Math.min(canAdd, leftover);
+    result[idx].height = current + add;
+    leftover -= add;
+  }
+
+  return result;
+};
 
 export const Gallery = ({
   items,
@@ -66,14 +94,35 @@ export const Gallery = ({
   gap = 32,
   rowItemsWidth,
   isMobile = false,
+  mobileGallery = false,
 }: Props) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   if (items !== undefined) {
+    if (mobileGallery && items.length) {
+      return (
+        <div className={styles.mobileGalleryWrapper} ref={scrollRef}>
+          <div className={styles.mobileGalleryTrack} style={{ gap: `${gap}px` }}>
+            {items.map((it, index) => {
+              const h = pickVariantByIndex(index, MOBILE_HEIGHT_VARIANTS);
+              return (
+                <div
+                  key={it.key ?? index}
+                  className={styles.mobileGalleryItem}
+                  style={{ height: `${h}px` }}
+                >
+                  {it.node}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
     const isSingleCentered = singleCentered === true;
     const isCenteredMode = centered === true || isSingleCentered;
 
-    // ---------- centered mode ----------
     if (isCenteredMode) {
       const n = items.length;
 
@@ -83,20 +132,14 @@ export const Gallery = ({
         if (len <= 0) return 0;
 
         if (isSingleCentered) {
-          // показываем элемент по центру массива
           return clamp(Math.floor((len - 1) / 2), 0, Math.max(0, len - 1));
         }
 
-        // показываем пару по центру массива
         if (len < 2) return 0;
         return clamp(Math.floor((len - 2) / 2), 0, Math.max(0, len - 2));
       };
 
-      type CenterState = {
-        activeStart: number;
-        measured: boolean;
-      };
-
+      type CenterState = { activeStart: number; measured: boolean };
       type Action =
         | { type: 'setActiveStart'; value: number }
         | { type: 'markMeasured' }
@@ -125,16 +168,10 @@ export const Gallery = ({
       );
 
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      const dimsRef = useRef({
-        wrapperW: 0,
-        itemW: 0,
-      });
-
-      // форс-рендер (без useState)
+      const dimsRef = useRef({ wrapperW: 0, itemW: 0 });
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const [, forceRerender] = useReducer((x: number) => x + 1, 0);
 
-      // измерения + ResizeObserver
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useLayoutEffect(() => {
         const wrapper = scrollRef.current;
@@ -146,7 +183,6 @@ export const Gallery = ({
         if (!firstItem) return;
 
         const measure = () => {
-          // offsetWidth не учитывает scale(transform)
           const itemW = firstItem.offsetWidth;
           const wrapperW = wrapper.clientWidth;
 
@@ -163,15 +199,10 @@ export const Gallery = ({
 
         measure();
 
-        const ro = new ResizeObserver(() => {
-          measure();
-        });
-
+        const ro = new ResizeObserver(() => measure());
         ro.observe(wrapper);
 
-        return () => {
-          ro.disconnect();
-        };
+        return () => ro.disconnect();
       }, [n]);
 
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -253,7 +284,6 @@ export const Gallery = ({
                     key={it.key ?? index}
                     className={[
                       styles.rowItemCentered,
-                      // Если rowItemsWidth задан — не уменьшаем боковые (как у тебя было)
                       isCenter || rowItemsWidth
                         ? styles.rowItemCenteredActive
                         : styles.rowItemCenteredSide,
@@ -274,7 +304,6 @@ export const Gallery = ({
       );
     }
 
-    // ---------- simple row mode ----------
     const handleScroll = (direction: 'left' | 'right') => {
       const node = scrollRef.current;
       if (!node) return;
@@ -316,24 +345,26 @@ export const Gallery = ({
     );
   }
 
-  // ================================
-  // OLD MODE: items НЕ передан
-  // ================================
-
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const baseImages: ImgItem[] = useMemo(
     () =>
-      Object.values(imageModules).map((src) => ({
+      Object.values(imageModules).map((src, index) => ({
         src,
-        // eslint-disable-next-line react-hooks/purity
-        height: HEIGHT_VARIANTS[Math.floor(Math.random() * HEIGHT_VARIANTS.length)],
+        height: mobileGallery
+          ? pickVariantByIndex(index, MOBILE_HEIGHT_VARIANTS)
+          : pickVariantByIndex(index, HEIGHT_VARIANTS),
       })),
-    [],
+    [mobileGallery],
   );
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const columns: ColumnData[] = useMemo(() => {
     if (!baseImages.length) return [];
+
+    const maxColumnH = mobileGallery ? MOBILE_MAX_COLUMN_HEIGHT : MAX_COLUMN_HEIGHT;
+    const gapV = mobileGallery ? MOBILE_VERTICAL_GAP : VERTICAL_GAP;
+    const baseW = mobileGallery ? MOBILE_MAX_ITEM_WIDTH : BASE_COLUMN_WIDTH;
+    const multipliers = mobileGallery ? [1] : WIDTH_MULTIPLIERS;
 
     const cols: ImgItem[][] = [[]];
     const heights: number[] = [0];
@@ -341,10 +372,10 @@ export const Gallery = ({
 
     baseImages.forEach((img) => {
       const col = cols[currentCol];
-      const extraGap = col.length > 0 ? VERTICAL_GAP : 0;
+      const extraGap = col.length > 0 ? gapV : 0;
       const nextHeight = heights[currentCol] + extraGap + img.height;
 
-      if (col.length === 0 || nextHeight <= MAX_COLUMN_HEIGHT) {
+      if (col.length === 0 || nextHeight <= maxColumnH) {
         col.push({ ...img });
         heights[currentCol] = heights[currentCol] + extraGap + img.height;
       } else {
@@ -357,35 +388,42 @@ export const Gallery = ({
     const result: ColumnData[] = cols.map((col) => {
       if (!col.length) {
         const multiplier =
-          // eslint-disable-next-line react-hooks/purity
           WIDTH_MULTIPLIERS[Math.floor(Math.random() * WIDTH_MULTIPLIERS.length)];
         return { images: [], width: BASE_COLUMN_WIDTH * multiplier };
       }
 
-      const totalContentHeight =
-        col.reduce((sum, img) => sum + img.height, 0) +
-        VERTICAL_GAP * (col.length - 1);
+      if (!mobileGallery) {
+        // Обычный режим: дотягиваем последнюю карточку
+        const totalContentHeight =
+          col.reduce((sum, img) => sum + img.height, 0) + gapV * (col.length - 1);
 
-      const leftover = MAX_COLUMN_HEIGHT - totalContentHeight;
-      if (leftover > 0) {
-        col[col.length - 1] = {
-          ...col[col.length - 1],
-          height: col[col.length - 1].height + leftover,
-        };
+        const leftover = maxColumnH - totalContentHeight;
+        if (leftover > 0) {
+          col[col.length - 1] = {
+            ...col[col.length - 1],
+            height: col[col.length - 1].height + leftover,
+          };
+        }
+      } else {
+        // mobileGallery: заполняем колонку, но не превращаем всё в одинаковые плитки
+        const filled = fillColumnHeightPreserveVariety(
+          col,
+          maxColumnH,
+          gapV,
+          MOBILE_MAX_ITEM_HEIGHT,
+        );
+        col.splice(0, col.length, ...filled);
       }
 
-      const multiplier =
-        // eslint-disable-next-line react-hooks/purity
-        WIDTH_MULTIPLIERS[Math.floor(Math.random() * WIDTH_MULTIPLIERS.length)];
-      const width = BASE_COLUMN_WIDTH * multiplier;
+      const multiplier = multipliers[0] ?? 1;
+      const width = baseW * multiplier;
 
       return { images: col, width };
     });
 
     return result;
-  }, [baseImages]);
+  }, [baseImages, mobileGallery]);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const oldHandleScroll = (direction: 'left' | 'right') => {
     const node = scrollRef.current;
     if (!node) return;
@@ -398,23 +436,28 @@ export const Gallery = ({
   };
 
   return (
-    <div className={styles.section}>
-      <div className={styles.header}>
-        <div className={styles.controls}>
-          <IconButton
-            icon={<ArrowLeft />}
-            hoverIcon={<ArrowLeftActive />}
-            onClick={() => oldHandleScroll('left')}
-          />
-          <IconButton
-            icon={<ArrowRight />}
-            hoverIcon={<ArrowRightActive />}
-            onClick={() => oldHandleScroll('right')}
-          />
+    <div className={clsx(styles.section, mobileGallery && styles.sectionMobile)}>
+      {!mobileGallery && (
+        <div className={styles.header}>
+          <div className={styles.controls}>
+            <IconButton
+              icon={<ArrowLeft />}
+              hoverIcon={<ArrowLeftActive />}
+              onClick={() => oldHandleScroll('left')}
+            />
+            <IconButton
+              icon={<ArrowRight />}
+              hoverIcon={<ArrowRightActive />}
+              onClick={() => oldHandleScroll('right')}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className={styles.wrapper} ref={scrollRef}>
+      <div
+        className={mobileGallery ? styles.wrapperMobile : styles.wrapper}
+        ref={scrollRef}
+      >
         <div className={styles.track}>
           {columns.map((column, colIndex) => (
             <div
@@ -426,7 +469,13 @@ export const Gallery = ({
                 <div
                   key={img.src}
                   className={styles.item}
-                  style={{ height: `${img.height}px` }}
+                  style={{
+                    height: `${
+                      mobileGallery
+                        ? Math.min(img.height, MOBILE_MAX_ITEM_HEIGHT)
+                        : img.height
+                    }px`,
+                  }}
                 >
                   <img
                     src={img.src}

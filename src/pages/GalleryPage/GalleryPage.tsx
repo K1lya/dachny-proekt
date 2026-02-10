@@ -23,26 +23,31 @@ export const GalleryPage: FC<PropsWithChildren<GalleryPageProps>> = (props) => {
         className,
       )}
     >
-      <div
-        className={clsx(styles.titleContainer, {
-          [styles.titleContainerMobile]: view === EView.MOBILE,
-        })}
-      >
+      {Boolean(view === EView.MOBILE) && (
         <Text
           weight={400}
-          size={
-            view === EView.TABLET ? '36px' : view === EView.MOBILE ? '16px' : '56px'
-          }
-          className={clsx(styles.title, {
-            [styles.titleContainerMobile]: view === EView.MOBILE,
-          })}
+          size={'16px'}
+          className={clsx(styles.title, styles.titleContainerMobile)}
         >
           Вдохновляйтесь уютом,
           <br />
           который мы создаём
         </Text>
-      </div>
-      <Gallery />
+      )}
+      {view !== EView.MOBILE && (
+        <div className={clsx(styles.titleContainer)}>
+          <Text
+            weight={400}
+            size={view === EView.TABLET ? '36px' : '56px'}
+            className={clsx(styles.title)}
+          >
+            Вдохновляйтесь уютом,
+            <br />
+            который мы создаём
+          </Text>
+        </div>
+      )}
+      <Gallery mobileGallery={view === EView.MOBILE} />
     </section>
   );
 };
