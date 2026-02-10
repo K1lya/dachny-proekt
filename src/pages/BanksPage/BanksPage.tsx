@@ -23,6 +23,7 @@ export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
   }));
   return (
     <section
+      id={'mortgage'}
       className={clsx(
         styles.root,
         { [styles.rootMobile]: view === EView.MOBILE },

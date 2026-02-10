@@ -19,6 +19,8 @@ import WhatsAppIcon from '@/shared/assets/icons/whatsapp.svg?react';
 import WhatsAppHoveredIcon from '@/shared/assets/icons/whatsappHover.svg?react';
 import SandwichIcon from '@/shared/assets/icons/sandwitch.svg?react';
 import SandwichIconMobile from '@/shared/assets/icons/sandwichIconMobile.svg?react';
+import PhoneLogo from '@/shared/assets/icons/phone.svg?react';
+import LocationLogo from '@/shared/assets/icons/location.svg?react';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { IconButton } from '@/shared/ui/IconButton/IconButton.tsx';
 import { Button } from '@/shared/ui/Button/Button.tsx';
@@ -69,11 +71,85 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
     }
   }, []);
 
+  if (view === EView.MOBILE && position === 'bottom') {
+    return (
+      <>
+        <div id={'contacts'} className={styles.footerRootMobile}>
+          <div className={styles.footerMobileLogoContainer}>
+            <LogoBottomMobile />
+            <Button
+              width={'130px'}
+              height={'31px'}
+              fontSize={'12px'}
+              weight={500}
+              className={styles.buttonBottom}
+            >
+              Заказать звонок
+            </Button>
+          </div>
+          <div className={styles.footerMobilePhone}>
+            <div className={styles.footerInfoConatainer}>
+              <div className={styles.footerInfo}>
+                <PhoneLogo />
+                <Text size={'14px'} weight={600} color={'#EAE7DC'}>
+                  +7 960 734 6828
+                </Text>
+              </div>
+              <div className={styles.footerInfo}>
+                <LocationLogo />
+                <Text size={'12px'} weight={400} color={'#EAE7DC'}>
+                  г. Владимир,
+                  <br />
+                  ул. Куйбышева, 16А
+                  <br />
+                  <Text size={'12px'} weight={400} color={'#D8C3A5'}>
+                    территория «Мир дерева»
+                  </Text>
+                </Text>
+              </div>
+            </div>
+            <div className={styles.footerButtons}>
+              <IconButton
+                icon={<TelegramIcon />}
+                hoverIcon={<TelegramHoveredIcon />}
+              />
+              <IconButton
+                icon={<WhatsAppIcon />}
+                hoverIcon={<WhatsAppHoveredIcon />}
+              />
+            </div>
+          </div>
+          <div className={styles.footerLinks}>
+            {headerLinks.map((link) => (
+              <LinkButton
+                key={link.name}
+                link={`#${link.link}`}
+                className={styles.footerMobileLink}
+              >
+                {link.name}
+              </LinkButton>
+            ))}
+          </div>
+        </div>
+        <div className={styles.footerPolitics}>
+          <Text size={'11px'} color={'#D8C3A5'}>
+            © 2025 Дачный Проект
+          </Text>
+          <Text size={'11px'} color={'#D8C3A5'}>
+            Политика конфиденциальности
+          </Text>
+        </div>
+      </>
+    );
+  }
+
   if (view === EView.MOBILE) {
     return (
       <>
         <header className={styles.rootMobile}>
-          <LogoMobile className={styles.logoMobile} />
+          <div className={styles.logoMobile}>
+            <LogoMobile />
+          </div>
           <div className={styles.contentMobile}>
             <div className={styles.topContentMobile}>
               <Text size={'12px'} weight={600}>
@@ -99,6 +175,7 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
   return (
     <>
       <header
+        id={position === 'bottom' ? 'contacts' : ''}
         className={clsx(
           styles.root,
           {
@@ -187,7 +264,7 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
               {headerLinks.map((link) => (
                 <LinkButton
                   key={link.name}
-                  link={link.link}
+                  link={`#${link.link}`}
                   className={position === 'bottom' ? styles.bottomLink : undefined}
                 >
                   {link.name}

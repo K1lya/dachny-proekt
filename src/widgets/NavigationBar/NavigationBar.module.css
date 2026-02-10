@@ -128,3 +128,69 @@
 .iconMobile {
   padding-top: 15px;
 }
+
+.footerRootMobile {
+  background-color: #000000D9;
+  padding: 32px 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.footerMobileLogoContainer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.footerMobilePhone {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerInfoConatainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footerInfo {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+}
+
+.footerButtons {
+  display: flex;
+  gap: 13px;
+  align-self: start;
+}
+
+.buttonBottom {
+  padding: 6px 14px;
+}
+
+.footerLinks {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.footerMobileLink.footerMobileLink {
+  color: #EAE7DC;
+  width: fit-content;
+}
+
+.footerPolitics {
+  background-color: #2A2A2B;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}

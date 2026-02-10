@@ -18,6 +18,7 @@ export const OurClientsPage: FC<PropsWithChildren<OurClientsPageProps>> = (
   const view = useView();
   return (
     <section
+      id={'reviews'}
       className={clsx(
         styles.root,
         { [styles.rootTable]: view === EView.TABLET },

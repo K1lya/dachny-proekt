@@ -15,6 +15,7 @@ export const GalleryPage: FC<PropsWithChildren<GalleryPageProps>> = (props) => {
   const view = useView();
   return (
     <section
+      id={'works'}
       className={clsx(
         styles.root,
         { [styles.rootTablet]: view === EView.TABLET },

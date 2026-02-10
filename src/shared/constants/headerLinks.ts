@@ -6,22 +6,22 @@ export interface IHeaderLink {
 export const headerLinks: IHeaderLink[] = [
   {
     name: 'Наши работы',
-    link: '/works',
+    link: 'works',
   },
   {
     name: 'Этапы работы',
-    link: '/stages',
+    link: 'stages',
   },
   {
     name: 'Ипотека',
-    link: '/mortgage',
+    link: 'mortgage',
   },
   {
     name: 'Отзывы',
-    link: '/reviews',
+    link: 'reviews',
   },
   {
     name: 'Контакты',
-    link: '/contacts',
+    link: 'contacts',
   },
 ];

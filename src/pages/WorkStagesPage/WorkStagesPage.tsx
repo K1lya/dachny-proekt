@@ -33,6 +33,7 @@ export const WorkStagesPage = () => {
 
   return (
     <section
+      id={'stages'}
       className={clsx(styles.root, {
         [styles.rootTable]: view === EView.TABLET,
         [styles.rootMobile]: isMobile,
