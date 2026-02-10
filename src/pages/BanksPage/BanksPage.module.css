@@ -37,6 +37,13 @@
   margin-top: 10px;
 }
 
+.borderTablet {
+  width: 70px;
+  height: 2px;
+  border-bottom: 4px solid #E85A4F;
+  margin-top: 10px;
+}
+
 .borderMobile {
   width: 42px;
   height: 2px;

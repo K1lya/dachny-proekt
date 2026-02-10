@@ -48,6 +48,7 @@ export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
           </Text>
           <div
             className={clsx(styles.border, {
+              [styles.borderTablet]: view === EView.TABLET,
               [styles.borderMobile]: view === EView.MOBILE,
             })}
           />

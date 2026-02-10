@@ -59,6 +59,7 @@ export const ClientWordsPage: FC<PropsWithChildren<ClientWordsPageProps>> = (
           <div
             className={clsx(styles.border, {
               [styles.borderMobile]: view === EView.MOBILE,
+              [styles.borderTablet]: view === EView.TABLET,
             })}
           />
         </div>
