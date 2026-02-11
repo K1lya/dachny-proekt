@@ -27,6 +27,7 @@ import { Button } from '@/shared/ui/Button/Button.tsx';
 import { LinkButton } from '@/shared/ui/LinkButton/LinkButton.tsx';
 import { headerLinks } from '@/shared/constants/headerLinks.ts';
 import { EView, useView } from '@/shared/hooks/useView.ts';
+import { useSandwichMenuModal } from '@/features/SandwichMenu';
 
 interface HeaderProps {
   position?: 'top' | 'bottom';
@@ -64,6 +65,7 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [margin, setMargin] = useState(260);
   const view = useView();
+  const { toggle } = useSandwichMenuModal();
 
   useLayoutEffect(() => {
     if (ref.current) {
@@ -125,6 +127,7 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
                 key={link.name}
                 link={`#${link.link}`}
                 className={styles.footerMobileLink}
+                noBorder
               >
                 {link.name}
               </LinkButton>
@@ -166,7 +169,11 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
             </div>
             <Text size={'11px'}>г. Владимир, ул. Куйбышева, 16А</Text>
           </div>
-          <IconButton icon={<SandwichIconMobile />} className={styles.iconMobile} />
+          <IconButton
+            icon={<SandwichIconMobile />}
+            onClick={() => toggle()}
+            className={styles.iconMobile}
+          />
         </header>
       </>
     );

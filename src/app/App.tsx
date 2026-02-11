@@ -9,23 +9,28 @@ import { ClientWordsPage } from '@/pages/ClientWordsPage';
 import { BanksPage } from '@/pages/BanksPage';
 import { NavigationBar } from '@/widgets/NavigationBar';
 import { SecondPage } from '@/pages/SecondPage';
+import { SandwichMenu, SandwichMenuContextProvider } from '@/features/SandwichMenu';
 
 function App() {
   return (
     <>
-      <div className={'app'}>
-        <FirstPage />
-        <SecondPage />
-        <GalleryPage />
-        <PutBidPage />
-        <WorkStagesPage />
-        <WorksPage />
-        <OurClientsPage />
-        <ClientWordsPage />
-        <BanksPage />
-        <AboutCompanyPage />
-        <NavigationBar position='bottom' />
-      </div>
+      <SandwichMenuContextProvider>
+        <SandwichMenu>
+          <div className={'app'}>
+            <FirstPage />
+            <SecondPage />
+            <GalleryPage />
+            <PutBidPage />
+            <WorkStagesPage />
+            <WorksPage />
+            <OurClientsPage />
+            <ClientWordsPage />
+            <BanksPage />
+            <AboutCompanyPage />
+            <NavigationBar position='bottom' />
+          </div>
+        </SandwichMenu>
+      </SandwichMenuContextProvider>
     </>
   );
 }

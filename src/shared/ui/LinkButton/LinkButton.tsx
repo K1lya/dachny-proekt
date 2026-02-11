@@ -5,13 +5,25 @@ import styles from './LinkButton.module.css';
 interface LinkButtonProps {
   className?: string;
   link?: string;
+  noBorder?: boolean;
+  onClick?: () => void;
 }
 
 export const LinkButton: FC<PropsWithChildren<LinkButtonProps>> = (props) => {
   // consts
-  const { className, children, link } = props;
+  const { className, children, link, noBorder, onClick } = props;
+
+  const onClickHandler = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
   return (
-    <a className={clsx(styles.root, className)} href={link}>
+    <a
+      onClick={onClickHandler}
+      className={clsx(styles.root, noBorder && styles.noBorder, className)}
+      href={link}
+    >
       {children}
     </a>
   );
