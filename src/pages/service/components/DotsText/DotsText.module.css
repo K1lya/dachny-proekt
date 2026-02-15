@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.container {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+}
+
+.containerTablet {
+  gap: 12px
+}
+
+.containerMobile {
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #E98074;
+}
+
+.dotTablet {
+  width: 8px;
+  height: 8px;
+}
+
+.dotMobile {
+  width: 8px;
+  height: 8px;
+}
+
+.dotContainer {
+  padding-top: 5px;
+}
+
+.dotContainerTablet {
+  padding-top: 5px;
+}
+
+.dotContainerMobile {
+  padding-top: 3px;
+}

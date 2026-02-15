@@ -1,34 +1,25 @@
-import { FirstPage } from '@/pages/FirstPage';
-import { GalleryPage } from '@/pages/GalleryPage';
-import { PutBidPage } from '@/pages/PutBidPage';
-import { WorkStagesPage } from '@/pages/WorkStagesPage';
-import { WorksPage } from '@/pages/WorksPage';
-import { OurClientsPage } from '@/pages/OurClientsPage';
-import { AboutCompanyPage } from '@/pages/AboutCompanyPage';
-import { ClientWordsPage } from '@/pages/ClientWordsPage';
-import { BanksPage } from '@/pages/BanksPage';
-import { NavigationBar } from '@/widgets/NavigationBar';
-import { SecondPage } from '@/pages/SecondPage';
 import { SandwichMenu, SandwichMenuContextProvider } from '@/features/SandwichMenu';
+import { Main } from '@/pages/main';
+import { Route, Switch } from 'wouter';
+import { ENavigationPath } from '@/shared/types/types.ts';
+import { Service } from '@/pages/service';
 
 function App() {
   return (
     <>
       <SandwichMenuContextProvider>
         <SandwichMenu>
-          <div className={'app'}>
-            <FirstPage />
-            <SecondPage />
-            <GalleryPage />
-            <PutBidPage />
-            <WorkStagesPage />
-            <WorksPage />
-            <OurClientsPage />
-            <ClientWordsPage />
-            <BanksPage />
-            <AboutCompanyPage />
-            <NavigationBar position='bottom' />
-          </div>
+          <Switch>
+            <Route path={ENavigationPath.MAIN} component={Main} />
+            <Route path={'/dachny-proekt'} component={Main} />
+          </Switch>
+          <Switch>
+            <Route path={ENavigationPath.SERVICE} component={Service} />
+            <Route
+              path={'/dachny-proekt/' + ENavigationPath.SERVICE}
+              component={Service}
+            />
+          </Switch>
         </SandwichMenu>
       </SandwichMenuContextProvider>
     </>

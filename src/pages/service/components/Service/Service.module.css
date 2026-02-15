@@ -1,0 +1,42 @@
+.root {
+  background-color: #F8F6F0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-family-main), serif;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 0 340px;
+  padding-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contentTablet {
+  padding: 0 30px;
+  padding-top: 32px;
+}
+
+.contentMobile {
+  padding: 20px;
+  padding-top: 12px;
+  gap: 20px;
+}
+
+.navigation {
+  padding: 14px 0 0;
+}
+
+.navigationTablet {
+  padding: 16px 30px 0;
+}
+
+.navigationMobile {
+  padding: 4px 15px 0;
+}

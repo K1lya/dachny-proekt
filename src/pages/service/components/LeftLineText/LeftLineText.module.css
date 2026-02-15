@@ -1,0 +1,16 @@
+.root {
+  border-left: 6px solid #E85A4F;
+}
+
+.rootMobile {
+  border-left-width: 2px;
+}
+
+.text {
+  padding-left: 32px;
+  display: block;
+}
+
+.textMobile {
+  padding-left: 16px;
+}
