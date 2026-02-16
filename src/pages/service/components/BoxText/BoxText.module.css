@@ -1,0 +1,65 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #D8C3A5;
+  border-radius: 8px;
+  background-color: #FEFCF3;
+  padding: 50px;
+  position: relative;
+  gap: 7px;
+}
+
+.rootTablet {
+  padding: 32px;
+}
+
+.rootMobile {
+  padding: 20px;
+  gap: 12px;
+  border-width: 2px;
+}
+
+.title {
+  position: relative;
+  padding-bottom: 11px;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 68px;          /* длина линии – половина ширины элемента */
+  height: 5px;         /* толщина */
+  background: #E85A4F;     /* цвет */
+}
+
+.titleTablet {
+
+}
+
+.titleMobile {
+  padding-bottom: 4px;
+}
+
+.titleMobile::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;          /* длина линии – половина ширины элемента */
+  height: 2px;         /* толщина */
+  background: #E85A4F;     /* цвет */
+}
+
+.text {
+  padding-left: 75px;
+}
+
+.textTablet {
+  padding-left: 68px;
+}
+
+.textMobile {
+  padding-left: 20px;
+}
