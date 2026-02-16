@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.rootTablet {
+  gap: 16px;
+}
+
+.rootMobile {
+  gap: 14px;
+}
+
+.container {
+  display: flex;
+  align-items: start;
+  gap: 18px;
+}
+
+.containerTablet {
+  gap: 16px;
+}
+
+.containerMobile {
+  gap: 14px;
+}

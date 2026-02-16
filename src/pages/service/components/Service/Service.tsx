@@ -9,6 +9,7 @@ import { Text } from '@/pages/service/components/Text/Text.tsx';
 import { Title } from '@/pages/service/components/Title/Title.tsx';
 import { DotsText } from '@/pages/service/components/DotsText/DotsText.tsx';
 import { AlertText } from '@/pages/service/components/AlertText/AlertText.tsx';
+import { NumberText } from '@/pages/service/components/NumberText/NumberText.tsx';
 
 const Service = () => {
   // consts
@@ -69,6 +70,13 @@ const Service = () => {
             // eslint-disable-next-line max-len
             'Если пренебречь данными правилами и завершить строительство в один этап, то в дальнейшем вы можете столкнуться с серьезными проблемами.'
           }
+        />
+        <NumberText
+          text={[
+            'Для того чтобы создать действительно качественное',
+            ' и износостойкое строение, необходимо более внимательно подходить' +
+              '  как это вряд ли говорит о высоком профессионализме сотрудников.',
+          ]}
         />
       </div>
     </div>
