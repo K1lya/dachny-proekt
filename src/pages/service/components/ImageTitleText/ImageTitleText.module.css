@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.rootMobile {
+  gap: 24px;
+}
+
+.container {
+  display: flex;
+  gap: 70px;
+}
+
+.containerTablet {
+  flex-direction: column;
+  gap: 32px;
+}
+
+.containerMobile {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.img {
+  width: 550px;
+  height: 306px;
+  border-radius: 10px;
+}
+
+.imgTablet {
+  align-self: center;
+}
+
+.imgMobile {
+  align-self: center;
+  width: 280px;
+  height: 155px;
+}
+
+
