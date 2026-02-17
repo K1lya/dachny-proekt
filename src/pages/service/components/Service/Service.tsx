@@ -12,6 +12,8 @@ import { AlertText } from '@/pages/service/components/AlertText/AlertText.tsx';
 import { NumberText } from '@/pages/service/components/NumberText/NumberText.tsx';
 import { BoxText } from '@/pages/service/components/BoxText/BoxText.tsx';
 import { ImageTitleText } from '@/pages/service/components/ImageTitleText/ImageTitleText.tsx';
+import { BigImageAndTitle } from '@/pages/service/components/BigImageAndTitle/BigImageAndTitle.tsx';
+import { Gallery } from '@/pages/service/components/Gallery/Gallery.tsx';
 
 const Service = () => {
   // consts
@@ -99,6 +101,24 @@ const Service = () => {
             'может быть длинным  и писаться в две строки '
           }
           image={'1.png'}
+        />
+        <BigImageAndTitle
+          image={'1.png'}
+          title={'Большое изображаение с заголовком '}
+          underText={'Стиль подписи под изображением'}
+        />
+        <Gallery
+          images={[
+            '1.png',
+            '1.png',
+            '1.png',
+            '1.png',
+            '1.png',
+            '1.png',
+            '1.png',
+            '1.png',
+            '1.png',
+          ]}
         />
       </div>
     </div>

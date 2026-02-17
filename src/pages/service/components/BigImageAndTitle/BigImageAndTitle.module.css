@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rootTablet {
+  gap: 16px;
+}
+
+.rootMobile {
+  gap: 12px
+}
+
+.img {
+  width: 1240px;
+  height: 755px;
+  border-radius: 10px;
+}
+
+.imgTablet {
+  align-self: center;
+  width: 708px;
+  height: 336px;
+}
+
+.imgMobile {
+  align-self: center;
+  width: 280px;
+  height: 155px;
+}
+
+.under {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #828282;
+}
+
+.underTablet {
+  padding-bottom: 12px;
+}
+
+.underMobile {
+  padding-bottom: 11px;
+}

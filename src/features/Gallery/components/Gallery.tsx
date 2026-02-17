@@ -251,7 +251,9 @@ export const Gallery = ({
       return (
         <div className={styles.section}>
           <div className={styles.header}>
-            <div className={styles.controls}>
+            <div
+              className={clsx(styles.controls, isMobile && styles.controlsMobile)}
+            >
               <IconButton
                 icon={<ArrowLeft />}
                 hoverIcon={<ArrowLeftActive />}
@@ -318,7 +320,7 @@ export const Gallery = ({
     return (
       <div className={styles.section}>
         <div className={styles.header}>
-          <div className={styles.controls}>
+          <div className={clsx(styles.controls, isMobile && styles.controlsMobile)}>
             <IconButton
               icon={<ArrowLeft />}
               hoverIcon={<ArrowLeftActive />}

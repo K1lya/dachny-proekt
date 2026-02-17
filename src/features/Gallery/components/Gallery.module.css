@@ -82,6 +82,10 @@
   left: 77%;
 }
 
+.controlsMobile {
+  left: 55%
+}
+
 .wrapperRow {
   overflow-x: hidden;
   overflow-y: hidden;
