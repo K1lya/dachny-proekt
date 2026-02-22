@@ -182,7 +182,7 @@ const Service = () => {
       </div>
       <BanksPage isService />
       <AboutCompanyPage />
-      <NavigationBar position={'bottom`'} />
+      <NavigationBar position={'bottom'} />
     </div>
   );
 };
