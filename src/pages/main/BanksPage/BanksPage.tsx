@@ -8,11 +8,12 @@ import { EView, useView } from '@/shared/hooks/useView.ts';
 
 interface BanksPageProps {
   className?: string;
+  isService?: boolean;
 }
 
 export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
   // consts
-  const { className } = props;
+  const { className, isService } = props;
   const view = useView();
   const titleSize =
     view === EView.TABLET ? '32px' : view === EView.MOBILE ? '24px' : '56px';
@@ -26,7 +27,7 @@ export const BanksPage: FC<PropsWithChildren<BanksPageProps>> = (props) => {
       id={'mortgage'}
       className={clsx(
         styles.root,
-        { [styles.rootMobile]: view === EView.MOBILE },
+        { [styles.rootMobile]: view === EView.MOBILE, [styles.section]: isService },
         className,
       )}
     >

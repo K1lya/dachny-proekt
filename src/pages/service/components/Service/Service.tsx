@@ -17,6 +17,8 @@ import { Gallery } from '@/pages/service/components/Gallery/Gallery.tsx';
 import { Table } from '@/pages/service/components/Table/Table.tsx';
 import { Faq } from '@/pages/service/components/Faq/Faq.tsx';
 import { PromoSection } from '@/pages/service/components/PromoSection/PromoSection.tsx';
+import { BanksPage } from '@/pages/main/BanksPage';
+import { AboutCompanyPage } from '@/pages/main/AboutCompanyPage';
 
 const Service = () => {
   // consts
@@ -178,6 +180,9 @@ const Service = () => {
           ]}
         />
       </div>
+      <BanksPage isService />
+      <AboutCompanyPage />
+      <NavigationBar position={'bottom`'} />
     </div>
   );
 };
