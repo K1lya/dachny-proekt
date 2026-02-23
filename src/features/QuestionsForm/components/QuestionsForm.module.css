@@ -1,56 +1,53 @@
-/* Белый бэкдроп на весь экран */
+/* Бэкдроп */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 30000;
-
   background: rgba(255, 255, 255, 0.92);
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 240ms ease;
 }
-
 .backdropOpen {
   opacity: 1;
   pointer-events: auto;
 }
-
 .backdropClosed {
   opacity: 0;
   pointer-events: none;
 }
 
-/* Контейнер модалки (центр) */
+/* Контейнер модалки */
 .modal {
   position: fixed;
   inset: 0;
   z-index: 30001;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   pointer-events: none;
 }
-
 .modalOpen {
   pointer-events: auto;
 }
-
 .modalClosed {
   pointer-events: none;
 }
 
+/* Карточка */
 .card {
   width: min(360px, calc(100vw - 32px));
   background: #fff;
+
   border-radius: 10px;
   border: 1px solid #D8C3A5;
+  border-top: none; /* верх рисует волна */
+
   box-shadow: 0px 4px 110.5px -32px rgba(232, 224, 216, 1);
 
   padding: 25px;
   position: relative;
+  overflow: visible;
 
   transform: translateY(-14px);
   opacity: 0;
@@ -61,10 +58,39 @@
   transform: translateY(0);
   opacity: 1;
 }
-
 .modalClosed .card {
   transform: translateY(-14px);
   opacity: 0;
+}
+
+/* ВОЛНА */
+.wave {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100%);
+  height: 56px;
+  top: -14px;
+  pointer-events: none;
+}
+
+.waveSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Домик — над волной */
+.houseWrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -46px;
+
+  width: 63px;
+  height: 41px;
+
+  pointer-events: none;
 }
 
 /* крестик */
@@ -84,29 +110,27 @@
   cursor: pointer;
   color: #222;
 }
-
 .closeBtnDisabled {
   cursor: default;
   opacity: 0.4;
   pointer-events: none;
 }
 
+/* Заголовок */
 .header {
   text-align: center;
   margin-top: 6px;
   margin-bottom: 6px;
 }
-
 .title {
   position: relative;
 }
-
 .title::before {
   content: '';
   position: absolute;
   bottom: -12px;
-  left: 80px;
-  align-self: center;
+  left: 50%;
+  transform: translateX(-50%);
   width: 54px;
   height: 6px;
   background: #E85A4F;
@@ -124,7 +148,6 @@
   flex-direction: column;
   gap: 10px;
 }
-
 .field {
   display: block;
 }
@@ -142,7 +165,6 @@
 
   font-size: 14px;
 }
-
 .input:focus {
   border-color: rgba(232, 90, 79, 0.8);
 }
@@ -164,20 +186,6 @@
   justify-content: center;
 }
 
-.error {
-  color: #b42318;
-}
-
-.success {
-  color: #067647;
-}
-
-
-.submitBtnDisabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
 .submitInner {
   display: inline-flex;
   align-items: center;
@@ -192,7 +200,6 @@
   border-top-color: #fff;
   animation: spin 700ms linear infinite;
 }
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
