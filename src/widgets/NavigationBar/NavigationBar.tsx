@@ -28,6 +28,7 @@ import { LinkButton } from '@/shared/ui/LinkButton/LinkButton.tsx';
 import { headerLinks } from '@/shared/constants/headerLinks.ts';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { useSandwichMenuModal } from '@/features/SandwichMenu';
+import { useQuestionsFormModal } from '@/features/QuestionsForm/context/QuestionsFormContext.tsx';
 
 interface HeaderProps {
   position?: 'top' | 'bottom';
@@ -66,6 +67,11 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
   const [margin, setMargin] = useState(260);
   const view = useView();
   const { toggle } = useSandwichMenuModal();
+  const { toggle: questionsToggle } = useQuestionsFormModal();
+
+  const onGetCall = () => {
+    questionsToggle();
+  };
 
   useLayoutEffect(() => {
     if (ref.current) {
@@ -85,6 +91,7 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
               fontSize={'12px'}
               weight={500}
               className={styles.buttonBottom}
+              onClick={onGetCall}
             >
               Заказать звонок
             </Button>

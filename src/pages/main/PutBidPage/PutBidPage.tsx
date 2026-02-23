@@ -4,6 +4,7 @@ import styles from './PutBidPage.module.css';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Button } from '@/shared/ui/Button/Button.tsx';
+import { useQuestionsFormModal } from '@/features/QuestionsForm/context/QuestionsFormContext.tsx';
 
 interface PutBidPageProps {
   className?: string;
@@ -13,6 +14,7 @@ export const PutBidPage: FC<PropsWithChildren<PutBidPageProps>> = (props) => {
   // consts
   const { className } = props;
   const view = useView();
+  const { open } = useQuestionsFormModal();
   return (
     <section
       className={clsx(
@@ -84,7 +86,12 @@ export const PutBidPage: FC<PropsWithChildren<PutBidPageProps>> = (props) => {
                   {view === EView.DESC &&
                     'Оставьте заявку, мы перезвоним Вам в ближайшее время и всё обсудим'}
                 </Text>
-                <Button width={'258px'} weight={600} fontSize={'16px'}>
+                <Button
+                  width={'258px'}
+                  weight={600}
+                  fontSize={'16px'}
+                  onClick={() => open()}
+                >
                   ЗАКАЗАТЬ ЗВОНОК
                 </Button>
               </div>
@@ -117,7 +124,12 @@ export const PutBidPage: FC<PropsWithChildren<PutBidPageProps>> = (props) => {
           )}
           {view === EView.MOBILE && (
             <div className={styles.buttonContainerMobile}>
-              <Button width={'280px'} height={'42px'} fontSize={'12px'}>
+              <Button
+                width={'280px'}
+                height={'42px'}
+                fontSize={'12px'}
+                onClick={() => open()}
+              >
                 ЗАКАЗАТЬ ЗВОНОК
               </Button>
               <Button width={'280px'} height={'42px'} fontSize={'12px'}>

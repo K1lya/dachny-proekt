@@ -10,6 +10,8 @@ interface ButtonProps {
   weight?: number;
   width?: string;
   height?: string;
+  type?: 'submit' | 'reset' | 'button';
+  disabled?: boolean;
 }
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
@@ -22,12 +24,16 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
     height,
     fontSize = '16px',
     weight = 600,
+    type,
+    disabled,
   } = props;
   return (
     <button
       onClick={onClick}
       className={clsx(styles.root, className)}
       style={{ width, height }}
+      type={type}
+      disabled={disabled}
     >
       <Text size={fontSize} weight={weight} color='#FFFFFF'>
         {children}

@@ -29,9 +29,9 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 68px;          /* длина линии – половина ширины элемента */
-  height: 5px;         /* толщина */
-  background: #E85A4F;     /* цвет */
+  width: 68px;
+  height: 5px;
+  background: #E85A4F;
 }
 
 .titleTablet {

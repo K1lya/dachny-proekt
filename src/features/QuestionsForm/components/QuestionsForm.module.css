@@ -1,0 +1,207 @@
+/* Белый бэкдроп на весь экран */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30000;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+.backdropOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.backdropClosed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Контейнер модалки (центр) */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30001;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+.modalOpen {
+  pointer-events: auto;
+}
+
+.modalClosed {
+  pointer-events: none;
+}
+
+.card {
+  width: min(360px, calc(100vw - 32px));
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #D8C3A5;
+  box-shadow: 0px 4px 110.5px -32px rgba(232, 224, 216, 1);
+
+  padding: 25px;
+  position: relative;
+
+  transform: translateY(-14px);
+  opacity: 0;
+  transition: transform 240ms ease, opacity 240ms ease;
+}
+
+.modalOpen .card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modalClosed .card {
+  transform: translateY(-14px);
+  opacity: 0;
+}
+
+/* крестик */
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  background: transparent;
+
+  font-size: 26px;
+  line-height: 36px;
+  cursor: pointer;
+  color: #222;
+}
+
+.closeBtnDisabled {
+  cursor: default;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.title {
+  position: relative;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 80px;
+  align-self: center;
+  width: 54px;
+  height: 6px;
+  background: #E85A4F;
+}
+
+.subheader {
+  opacity: 0.75;
+  margin-top: 24px;
+  margin-bottom: 14px;
+}
+
+/* форма */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  display: block;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+
+  height: 36px;
+  padding: 0 10px;
+
+  border: 1px solid #D8C3A5;
+  border-radius: 3px;
+  outline: none;
+
+  font-size: 14px;
+}
+
+.input:focus {
+  border-color: rgba(232, 90, 79, 0.8);
+}
+
+.textarea {
+  height: 96px;
+  padding: 10px;
+  resize: none;
+}
+
+.note {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.captcha {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  color: #b42318;
+}
+
+.success {
+  color: #067647;
+}
+
+
+.submitBtnDisabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.submitInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.consent {
+  margin-top: 6px;
+  font-size: 11px;
+  opacity: 0.7;
+  line-height: 1.2;
+}
