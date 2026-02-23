@@ -5,11 +5,18 @@ import clsx from 'clsx';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Button } from '@/shared/ui/Button/Button.tsx';
 import { useEffect, useRef, useState } from 'react';
+import { useQuestionsFormModal } from '@/features/QuestionsForm/context/QuestionsFormContext.tsx';
 
 export const WorkStagesPage = () => {
   const view = useView();
   const isMobile = view === EView.MOBILE;
   const [activeBlock, setActiveBlock] = useState(1);
+
+  const { toggle } = useQuestionsFormModal();
+
+  const getQuestionsForm = () => {
+    toggle();
+  };
 
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -236,6 +243,7 @@ export const WorkStagesPage = () => {
             fontSize='19px'
             weight={600}
             className={styles.button}
+            onClick={getQuestionsForm}
           >
             ОСТАВИТЬ ЗАЯВКУ
           </Button>

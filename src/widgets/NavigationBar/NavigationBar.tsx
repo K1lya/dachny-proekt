@@ -259,7 +259,12 @@ export const NavigationBar: FC<PropsWithChildren<HeaderProps>> = (props) => {
                   hoverIcon={<WhatsAppHoveredIcon />}
                 />
               </div>
-              <Button width='180px' weight={500} className={styles.getCall}>
+              <Button
+                width='180px'
+                weight={500}
+                className={styles.getCall}
+                onClick={onGetCall}
+              >
                 Заказать звонок
               </Button>
             </div>

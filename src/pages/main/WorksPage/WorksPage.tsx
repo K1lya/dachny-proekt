@@ -7,10 +7,16 @@ import { DescInfo } from './components/DescInfo/DescInfo.tsx';
 import { TabletInfo } from './components/TabletInfo/TabletInfo.tsx';
 import { Button } from '@/shared/ui/Button/Button.tsx';
 import { MobileInfo } from './components/MobileInfo/MobileInfo.tsx';
+import { useQuestionsFormModal } from '@/features/QuestionsForm/context/QuestionsFormContext.tsx';
 
 export const WorksPage = () => {
   // consts
   const view = useView();
+  const { toggle } = useQuestionsFormModal();
+
+  const getQuestionsForm = () => {
+    toggle();
+  };
   return (
     <section
       className={clsx(styles.root, {
@@ -40,6 +46,7 @@ export const WorksPage = () => {
           className={clsx(styles.buttonTablet, {
             [styles.buttonMobile]: view === EView.MOBILE,
           })}
+          onClick={getQuestionsForm}
         >
           ОСТАВИТЬ ЗАЯВКУ
         </Button>
