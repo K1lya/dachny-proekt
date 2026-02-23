@@ -2,11 +2,11 @@ import styles from './Table.module.css';
 
 /* eslint-disable */
 
-interface TableProps {
+export interface ITableProps {
   data?: string[][];
 }
 
-export const Table = ({ data }: TableProps) => {
+export const Table = ({ data }: ITableProps) => {
   if (!data?.length) return null;
 
   const [header, ...rows] = data;

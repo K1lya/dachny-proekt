@@ -5,13 +5,13 @@ import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { imagesMap } from '@/pages/service/constants/imagesMap.ts';
 
-interface BigImageAndTitleProps {
+export interface IBigImageAndTitleProps {
   image: string;
   title: string;
   underText: string;
 }
 
-export const BigImageAndTitle: FC<PropsWithChildren<BigImageAndTitleProps>> = (
+export const BigImageAndTitle: FC<PropsWithChildren<IBigImageAndTitleProps>> = (
   props,
 ) => {
   // consts

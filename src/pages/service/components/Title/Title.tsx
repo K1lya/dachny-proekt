@@ -4,11 +4,11 @@ import styles from './Title.module.css';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 
-interface TitleProps {
+export interface ITitleProps {
   text: string;
 }
 
-export const Title: FC<PropsWithChildren<TitleProps>> = (props) => {
+export const Title: FC<PropsWithChildren<ITitleProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

@@ -2,8 +2,10 @@ import styles from './DescInfo.module.css';
 import { Button } from '@/shared/ui/Button/Button.tsx';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import img from '@/shared/assets/icons/worksPage/img.png';
+import { useQuestionsFormModal } from '@/features/QuestionsForm/context/QuestionsFormContext.tsx';
 
 export const DescInfo = () => {
+  const { toggle } = useQuestionsFormModal();
   return (
     <div className={styles.root}>
       <div>
@@ -33,6 +35,7 @@ export const DescInfo = () => {
           height={'61px'}
           fontSize={'19px'}
           className={styles.button}
+          onClick={toggle}
         >
           ОСТАВИТЬ ЗАЯВКУ
         </Button>

@@ -4,11 +4,11 @@ import styles from './DotsText.module.css';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 
-interface DotsTextProps {
+export interface IDotsTextProps {
   text: string[];
 }
 
-export const DotsText: FC<PropsWithChildren<DotsTextProps>> = (props) => {
+export const DotsText: FC<PropsWithChildren<IDotsTextProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

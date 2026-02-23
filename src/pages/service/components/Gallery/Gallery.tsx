@@ -7,11 +7,11 @@ import { imagesMap } from '@/pages/service/constants/imagesMap.ts';
 import type { GalleryItem } from '@/features/Gallery/components/Gallery.tsx';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 
-interface GalleryProps {
+export interface IGalleryProps {
   images: string[];
 }
 
-export const Gallery: FC<PropsWithChildren<GalleryProps>> = (props) => {
+export const Gallery: FC<PropsWithChildren<IGalleryProps>> = (props) => {
   // consts
   const { images } = props;
   const view = useView();

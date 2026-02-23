@@ -4,11 +4,11 @@ import styles from './BoldTitle.module.css';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 
-interface BoldTitleProps {
+export interface IBoldTitleProps {
   text: string;
 }
 
-export const BoldTitle: FC<PropsWithChildren<BoldTitleProps>> = (props) => {
+export const BoldTitle: FC<PropsWithChildren<IBoldTitleProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

@@ -2,11 +2,11 @@ import type { FC, PropsWithChildren } from 'react';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 
-interface MainTitleProps {
+export interface IMainTitleProps {
   text: string;
 }
 
-export const MainTitle: FC<PropsWithChildren<MainTitleProps>> = (props) => {
+export const MainTitle: FC<PropsWithChildren<IMainTitleProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

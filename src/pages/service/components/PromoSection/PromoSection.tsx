@@ -4,11 +4,11 @@ import styles from './PromoSection.module.css';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 
-interface PromoSectionProps {
+export interface IPromoSectionProps {
   data?: string[];
 }
 
-export const PromoSection: FC<PropsWithChildren<PromoSectionProps>> = (props) => {
+export const PromoSection: FC<PropsWithChildren<IPromoSectionProps>> = (props) => {
   // consts
   const { data } = props;
   const view = useView();

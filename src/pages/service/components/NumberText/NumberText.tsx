@@ -4,11 +4,11 @@ import styles from './NumberText.module.css';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 
-interface NumberTextProps {
+export interface INumberTextProps {
   text: string[];
 }
 
-export const NumberText: FC<PropsWithChildren<NumberTextProps>> = (props) => {
+export const NumberText: FC<PropsWithChildren<INumberTextProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

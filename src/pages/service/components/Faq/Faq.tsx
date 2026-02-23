@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react';
 import styles from './Faq.module.css';
 import { Text } from '@/shared/ui/Text/Text';
+
 /* eslint-disable */
-type Props = {
+export interface IFaqProps {
   data: string[][];
-};
+}
 
 const IconClosed = () => (
   <svg
@@ -56,7 +57,7 @@ const IconOpen = () => (
   </svg>
 );
 
-export const Faq = ({ data }: Props) => {
+export const Faq = ({ data }: IFaqProps) => {
   const rows = useMemo(
     () => (data ?? []).filter((pair) => Array.isArray(pair) && pair.length >= 2),
     [data],

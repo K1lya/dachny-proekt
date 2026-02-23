@@ -8,7 +8,7 @@ import { Text } from '@/shared/ui/Text/Text.tsx';
   /* eslint-disable max-len */
 }
 
-interface AlertTextProps {
+export interface IAlertTextProps {
   text: string;
 }
 
@@ -44,7 +44,7 @@ const mobileIcon = (
   </svg>
 );
 
-export const AlertText: FC<PropsWithChildren<AlertTextProps>> = (props) => {
+export const AlertText: FC<PropsWithChildren<IAlertTextProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

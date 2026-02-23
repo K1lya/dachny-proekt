@@ -4,11 +4,11 @@ import styles from './LeftLineText.module.css';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 
-interface LeftLineTextProps {
+export interface ILeftLineTextProps {
   text: string;
 }
 
-export const LeftLineText: FC<PropsWithChildren<LeftLineTextProps>> = (props) => {
+export const LeftLineText: FC<PropsWithChildren<ILeftLineTextProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

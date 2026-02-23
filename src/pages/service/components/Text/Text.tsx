@@ -4,11 +4,11 @@ import styles from './Text.module.css';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text as SText } from '@/shared/ui/Text/Text';
 
-interface TextProps {
+export interface ITextProps {
   text: string;
 }
 
-export const Text: FC<PropsWithChildren<TextProps>> = (props) => {
+export const Text: FC<PropsWithChildren<ITextProps>> = (props) => {
   // consts
   const { text } = props;
   const view = useView();

@@ -4,12 +4,12 @@ import styles from './BoxText.module.css';
 import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 
-interface BoxTextProps {
+export interface IBoxTextProps {
   text: string;
   title?: string;
 }
 
-export const BoxText: FC<PropsWithChildren<BoxTextProps>> = (props) => {
+export const BoxText: FC<PropsWithChildren<IBoxTextProps>> = (props) => {
   // consts
   const { text, title } = props;
   const view = useView();

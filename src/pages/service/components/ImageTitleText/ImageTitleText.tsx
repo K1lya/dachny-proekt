@@ -5,13 +5,13 @@ import { EView, useView } from '@/shared/hooks/useView.ts';
 import { Text } from '@/shared/ui/Text/Text.tsx';
 import { imagesMap } from '@/pages/service/constants/imagesMap.ts';
 
-interface ImageTitleTextProps {
+export interface IImageTitleTextProps {
   text: string;
   title: string;
   image: string;
 }
 
-export const ImageTitleText: FC<PropsWithChildren<ImageTitleTextProps>> = (
+export const ImageTitleText: FC<PropsWithChildren<IImageTitleTextProps>> = (
   props,
 ) => {
   // consts

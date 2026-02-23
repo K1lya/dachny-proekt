@@ -1,5 +1,5 @@
 .root {
-  height: 512px;
+  height: 600px;
   background-color: #EAE7DC;
   overflow: visible;
   display: flex;
@@ -19,16 +19,18 @@
   justify-content: space-between;
   background-color: #EAE7DC;
   width: 1240px;
-  bottom: 10%;
+  bottom: 20px;
   border-radius: 15px;
 }
 
 .contentTablet {
   width: 708px;
+  bottom: 10%;
 }
 
 .contentMobile {
   bottom: auto;
   width: 100%;
   align-items: center;
+  bottom: 10%;
 }
